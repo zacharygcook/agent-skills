@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mermaid Diagrams"
+  short_description: "Create and verify diagrams as code"
+  default_prompt: "Use $mermaid-diagrams to create and render the smallest useful diagram for this system."
+policy:
+  allow_implicit_invocation: true

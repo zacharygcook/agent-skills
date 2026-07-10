@@ -1,0 +1,6 @@
+interface:
+  display_name: "Perplexity Research"
+  short_description: "Run current, citation-backed web research"
+  default_prompt: "Use $perplexity-research to research this topic with current primary sources and actionable conclusions."
+policy:
+  allow_implicit_invocation: true

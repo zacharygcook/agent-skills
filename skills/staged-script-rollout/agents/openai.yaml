@@ -1,0 +1,6 @@
+interface:
+  display_name: "Staged Script Rollout"
+  short_description: "Safely ramp scripts that write live data"
+  default_prompt: "Use $staged-script-rollout to take this live-writing script through dry run, limited live run, audit, and rollback."
+policy:
+  allow_implicit_invocation: false

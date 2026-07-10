@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fix Knip Unused Exports"
+  short_description: "Resolve Knip findings without hiding dead code"
+  default_prompt: "Use $fix-knip-unused-exports to classify and resolve the current Knip unused-export findings."
+policy:
+  allow_implicit_invocation: true

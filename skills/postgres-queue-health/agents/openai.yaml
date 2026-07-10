@@ -1,0 +1,6 @@
+interface:
+  display_name: "Postgres Queue Health"
+  short_description: "Diagnose queue bloat and claim slowdowns"
+  default_prompt: "Use $postgres-queue-health to review this Postgres queue for claim, MVCC, vacuum, index, and retention risks."
+policy:
+  allow_implicit_invocation: true

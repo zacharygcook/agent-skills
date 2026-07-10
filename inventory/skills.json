@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "skill_count": 17,
+  "skills": [
+    {
+      "name": "agent-readiness-scoring",
+      "path": "skills/agent-readiness-scoring",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 8,
+      "bytes": 64010,
+      "sha256": "1a0c49ba8b8a8947a541bdb7764d152b722464912c1e0ed6944d0be2de665e6a"
+    },
+    {
+      "name": "ban-type-assertions",
+      "path": "skills/ban-type-assertions",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2757,
+      "sha256": "9b76be9f76b8dbf707dbb26502b9dc6697dd778921b1102828e81f024ddb99b9"
+    },
+    {
+      "name": "code-review",
+      "path": "skills/code-review",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 3313,
+      "sha256": "13f06dc387bfc2d45aa586652fbec4e20c01ea5ee30619be635b323cb50875e3"
+    },
+    {
+      "name": "expand-test-coverage",
+      "path": "skills/expand-test-coverage",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2658,
+      "sha256": "3272dae11778da3747e106609e02150edbc98bdeb59742fbea0b30c81624b178"
+    },
+    {
+      "name": "fix-knip-unused-exports",
+      "path": "skills/fix-knip-unused-exports",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2456,
+      "sha256": "0bfcf63e965e37112827c058e88794184c7ecc7f7c4134d0c71600ac46641d71"
+    },
+    {
+      "name": "good-test-bad-test",
+      "path": "skills/good-test-bad-test",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2679,
+      "sha256": "6742f0184460d41294600e600855ad7ed540537aa4ff9f304e8f1111a5d88967"
+    },
+    {
+      "name": "handle-automated-code-review",
+      "path": "skills/handle-automated-code-review",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 3098,
+      "sha256": "97c55a46d0b417d5285aaff1e35671f3e422dcac14a069175433d6c8b580c83b"
+    },
+    {
+      "name": "local-html-pdf-reports",
+      "path": "skills/local-html-pdf-reports",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 3780,
+      "sha256": "f160d2e801ce4ca2090619fdd0f77df764829c8e9689991a561460ec3a047dc6"
+    },
+    {
+      "name": "local-web-e2e",
+      "path": "skills/local-web-e2e",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2895,
+      "sha256": "2a3dc430a37aae15047a32510e3d9d2d4ca559309577339a4aa37730d67a35b0"
+    },
+    {
+      "name": "mermaid-diagrams",
+      "path": "skills/mermaid-diagrams",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2549,
+      "sha256": "1fbbdb7f9d976d9e0de6e1ad8ab1961b4841278a9ed61db04ecea6fa4079d489"
+    },
+    {
+      "name": "perplexity-research",
+      "path": "skills/perplexity-research",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 3459,
+      "sha256": "e891ef55630b50731873bccabe4c8e096d820c35eafccb3145111860de0ef614"
+    },
+    {
+      "name": "postgres-queue-health",
+      "path": "skills/postgres-queue-health",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 3618,
+      "sha256": "c6e791172922018cf6fcf0924fe028b8136b251909c181e4cc216d95d681a697"
+    },
+    {
+      "name": "ralph-workflows",
+      "path": "skills/ralph-workflows",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 8,
+      "bytes": 7054,
+      "sha256": "53f2e42a6601c396f9caa35da9bcff88363141ad83e9da413e16c3d229236ff2"
+    },
+    {
+      "name": "repo-cleanup-auditor",
+      "path": "skills/repo-cleanup-auditor",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 6103,
+      "sha256": "996b22fbeb2de1ab298e4bd7bfa986bb9e4513be9bcd6244053a06f6c7059435"
+    },
+    {
+      "name": "staged-script-rollout",
+      "path": "skills/staged-script-rollout",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 6246,
+      "sha256": "58d8f476c563ad03b6982fc2414c9568ee2f3b67b0a852b24f3df98418a7d957"
+    },
+    {
+      "name": "triage-stale-pull-requests",
+      "path": "skills/triage-stale-pull-requests",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2530,
+      "sha256": "0671c9473133eaeaa7f27863d40ff1aadb39ad85243b239de2fc17af22150770"
+    },
+    {
+      "name": "ui-css-performance",
+      "path": "skills/ui-css-performance",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 2322,
+      "sha256": "8dc2621d80cf496be191c30a355ec0fb3e0814490ac081a45fc94f94469d1c6c"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Expand Test Coverage"
+  short_description: "Add meaningful tests and fix exposed bugs"
+  default_prompt: "Use $expand-test-coverage to add meaningful coverage for the current changes and fix real defects the tests expose."
+policy:
+  allow_implicit_invocation: true

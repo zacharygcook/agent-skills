@@ -1,0 +1,6 @@
+interface:
+  display_name: "Triage Stale Pull Requests"
+  short_description: "Decide whether old PRs should survive"
+  default_prompt: "Use $triage-stale-pull-requests to score this old pull request and recommend close, salvage, refresh, or merge."
+policy:
+  allow_implicit_invocation: true

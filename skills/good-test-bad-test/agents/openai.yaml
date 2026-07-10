@@ -1,0 +1,6 @@
+interface:
+  display_name: "Good Test, Bad Test"
+  short_description: "Choose valuable tests over coverage theater"
+  default_prompt: "Use $good-test-bad-test to classify these proposed tests and keep only durable behavior coverage."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ban Type Assertions"
+  short_description: "Replace TypeScript casts with verified types"
+  default_prompt: "Use $ban-type-assertions to replace these assertions with compiler-verified narrowing or runtime validation."
+policy:
+  allow_implicit_invocation: true

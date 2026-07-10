@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI and CSS Performance"
+  short_description: "Prevent frontend source and style bloat"
+  default_prompt: "Use $ui-css-performance to keep this UI change small, reachable, and measured."
+policy:
+  allow_implicit_invocation: true

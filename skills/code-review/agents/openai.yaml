@@ -1,0 +1,6 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Evidence-backed adversarial code review"
+  default_prompt: "Use $code-review to review the current changes and return prioritized findings with validation evidence."
+policy:
+  allow_implicit_invocation: true
