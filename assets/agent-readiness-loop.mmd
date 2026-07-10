@@ -1,0 +1,16 @@
+flowchart LR
+  audit["01 · AUDIT & PROVE<br/><b>82 criteria · concrete evidence</b>"]
+  choose["02 · CHOOSE<br/><b>One high-value gap</b>"]
+  implement["03 · BUILD<br/><b>Durable repository capability</b>"]
+  validate["04 · VERIFY<br/><b>Validate · rescore</b>"]
+  target{"Target<br/>reached?"}
+  level5["LEVEL 5<br/><b>Agent-ready, with receipts</b>"]
+
+  audit --> choose --> implement --> validate --> target
+  target -- "Not yet" --> choose
+  target -- "Yes" --> level5
+
+  classDef decision stroke:#ff2b88,stroke-width:3px
+  classDef success fill:#ff2b88,color:#ffffff,stroke:#ff2b88,stroke-width:3px
+  class target decision
+  class level5 success

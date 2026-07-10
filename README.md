@@ -1,7 +1,7 @@
 # Agent Skills
 
 [![Validate skills](https://github.com/zacharygcook/agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/zacharygcook/agent-skills/actions/workflows/validate.yml)
-[![skills.sh](https://skills.sh/b/zacharygcook/agent-skills)](https://skills.sh/zacharygcook/agent-skills)
+[![Install with skills.sh](https://img.shields.io/badge/install-skills.sh-ff2b88?logo=npm&logoColor=white)](#install-in-30-seconds)
 [![License: MIT](https://img.shields.io/badge/License-MIT-111111.svg)](LICENSE)
 
 Seventeen practical workflows for coding agents that need to do real engineering: make a repository
@@ -30,9 +30,13 @@ workflow:
 
 The loop is intentionally simple:
 
-```text
-audit → evidence-backed report → choose one gap → implement → validate → rescore → repeat
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/agent-readiness-loop-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/agent-readiness-loop-light.svg">
+  <img alt="The agent readiness loop: audit the repository, capture evidence, choose one gap, implement durable capability, validate and rescore, then repeat until the target is reached." src="assets/agent-readiness-loop-light.svg">
+</picture>
+
+*Diagram source: [`assets/agent-readiness-loop.mmd`](assets/agent-readiness-loop.mmd).*
 
 It is useful as a one-time health check, but the more interesting workflow is continuous improvement:
 give an agent a target, let it work through the highest-value readiness gaps, and keep every decision
