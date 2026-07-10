@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.0",
+  "source": "zacharygcook/agent-skills",
+  "packs": {
+    "agent-ready": {
+      "title": "Agent-Ready Repository",
+      "description": "Audit the repository, remove ambiguity, and build evidence-backed engineering feedback loops.",
+      "skills": [
+        "setup-agent-skills",
+        "agent-readiness-scoring",
+        "repo-cleanup-auditor",
+        "code-review",
+        "expand-test-coverage"
+      ]
+    },
+    "autonomous-builder": {
+      "title": "Autonomous Builder",
+      "description": "Run resumable implementation loops grounded in useful tests and review.",
+      "skills": [
+        "setup-agent-skills",
+        "ralph-workflows",
+        "good-test-bad-test",
+        "expand-test-coverage",
+        "handle-automated-code-review",
+        "code-review"
+      ]
+    },
+    "web-confidence": {
+      "title": "Web Application Confidence",
+      "description": "Exercise a browser application end to end and control frontend quality and bloat.",
+      "skills": [
+        "setup-agent-skills",
+        "local-web-e2e",
+        "expand-test-coverage",
+        "good-test-bad-test",
+        "ui-css-performance",
+        "mermaid-diagrams"
+      ]
+    },
+    "production-operator": {
+      "title": "Production Operator",
+      "description": "Operate database queues and live-writing scripts with staged validation and reviewable evidence.",
+      "skills": [
+        "setup-agent-skills",
+        "staged-script-rollout",
+        "postgres-queue-health",
+        "local-html-pdf-reports"
+      ]
+    },
+    "typescript-hygiene": {
+      "title": "TypeScript Hygiene",
+      "description": "Tighten type boundaries, exports, UI reachability, and emitted frontend weight.",
+      "skills": [
+        "setup-agent-skills",
+        "ban-type-assertions",
+        "fix-knip-unused-exports",
+        "ui-css-performance"
+      ]
+    },
+    "research-and-docs": {
+      "title": "Research and Reviewable Artifacts",
+      "description": "Research current questions and communicate results through diagrams and polished local reports.",
+      "skills": [
+        "setup-agent-skills",
+        "perplexity-research",
+        "mermaid-diagrams",
+        "local-html-pdf-reports"
+      ]
+    }
+  },
+  "skills": {
+    "setup-agent-skills": {
+      "priority": 0,
+      "summary": "Detect agents, repository signals, and prerequisites; recommend and vendor a focused skill set.",
+      "signals": ["always"],
+      "prerequisites": [
+        {
+          "id": "python",
+          "label": "Python 3",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["python3", "python"]}
+        },
+        {
+          "id": "npx",
+          "label": "Skills CLI through npx",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["npx"]},
+          "fallback": "The doctor still reports findings; install manually or add Node.js before vendoring."
+        }
+      ]
+    },
+    "agent-readiness-scoring": {
+      "priority": 1,
+      "summary": "Audit and iteratively improve repository readiness with a transparent 82-criterion rubric.",
+      "signals": ["always"],
+      "prerequisites": [
+        {
+          "id": "python",
+          "label": "Python 3",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["python3", "python"]}
+        }
+      ]
+    },
+    "repo-cleanup-auditor": {
+      "priority": 2,
+      "summary": "Audit deletion, move, and rename candidates before repository cleanup.",
+      "signals": ["always"],
+      "prerequisites": []
+    },
+    "code-review": {
+      "priority": 10,
+      "summary": "Perform an evidence-backed adversarial review of repository changes.",
+      "signals": ["git"],
+      "prerequisites": [
+        {
+          "id": "git",
+          "label": "Git",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["git"]}
+        }
+      ]
+    },
+    "expand-test-coverage": {
+      "priority": 11,
+      "summary": "Add behavior-focused coverage and fix implementation defects exposed by tests.",
+      "signals": ["tests"],
+      "prerequisites": []
+    },
+    "good-test-bad-test": {
+      "priority": 12,
+      "summary": "Distinguish valuable behavior tests from coverage theater and implementation pinning.",
+      "signals": ["tests"],
+      "prerequisites": []
+    },
+    "local-web-e2e": {
+      "priority": 13,
+      "summary": "Build safe local browser tests with isolated services, data, readiness, and artifacts.",
+      "signals": ["web", "browser_e2e"],
+      "prerequisites": [
+        {
+          "id": "browser",
+          "label": "Chromium-family browser",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["chromium", "chromium-browser", "google-chrome", "chrome", "msedge"]},
+          "fallback": "Use the repository's managed browser runtime or install browsers through its E2E framework."
+        }
+      ]
+    },
+    "handle-automated-code-review": {
+      "priority": 14,
+      "summary": "Verify automated review findings and safely triage or repair them.",
+      "signals": ["automated_review"],
+      "prerequisites": [
+        {
+          "id": "gh",
+          "label": "GitHub CLI",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["gh"]},
+          "fallback": "Use another authorized GitHub integration for review metadata and comments."
+        }
+      ]
+    },
+    "triage-stale-pull-requests": {
+      "priority": 15,
+      "summary": "Score old pull requests against current plans, quality, and architecture.",
+      "signals": ["stale_prs"],
+      "prerequisites": [
+        {
+          "id": "gh",
+          "label": "GitHub CLI",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["gh"]},
+          "fallback": "Use another authorized GitHub integration to inspect pull requests."
+        }
+      ]
+    },
+    "ban-type-assertions": {
+      "priority": 20,
+      "summary": "Replace TypeScript assertions with verified narrowing and runtime validation.",
+      "signals": ["typescript"],
+      "prerequisites": []
+    },
+    "fix-knip-unused-exports": {
+      "priority": 21,
+      "summary": "Resolve Knip findings without hiding dead code or weakening package contracts.",
+      "signals": ["knip"],
+      "prerequisites": []
+    },
+    "ui-css-performance": {
+      "priority": 22,
+      "summary": "Control unused UI source, CSS scanning, dependencies, and emitted asset weight.",
+      "signals": ["frontend"],
+      "prerequisites": []
+    },
+    "postgres-queue-health": {
+      "priority": 30,
+      "summary": "Diagnose MVCC, vacuum, index, transaction, claim, and retention risks in Postgres queues.",
+      "signals": ["queue"],
+      "prerequisites": [
+        {
+          "id": "psql",
+          "label": "Postgres client",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["psql"]},
+          "fallback": "Review schema and query source statically; use an approved database console for live diagnostics."
+        }
+      ]
+    },
+    "ralph-workflows": {
+      "priority": 31,
+      "summary": "Create and operate resumable autonomous implementation sprints.",
+      "signals": ["ralph"],
+      "prerequisites": []
+    },
+    "staged-script-rollout": {
+      "priority": 32,
+      "summary": "Ramp live-writing scripts through dry run, limited execution, audit, and rollback.",
+      "signals": ["live_scripts"],
+      "prerequisites": []
+    },
+    "local-html-pdf-reports": {
+      "priority": 40,
+      "summary": "Generate polished Markdown, HTML, PDF, and visually verified local reports.",
+      "signals": ["docs_heavy"],
+      "prerequisites": [
+        {
+          "id": "browser",
+          "label": "Chromium-family browser",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["chromium", "chromium-browser", "google-chrome", "chrome", "msedge"]},
+          "fallback": "Generate Markdown and HTML without PDF output."
+        },
+        {
+          "id": "pdf-tools",
+          "label": "Poppler PDF inspection tools",
+          "kind": "conditional",
+          "check": {"type": "all_commands", "commands": ["pdfinfo", "pdftoppm"]},
+          "fallback": "Deliver HTML and clearly report that page-render verification was unavailable."
+        }
+      ]
+    },
+    "mermaid-diagrams": {
+      "priority": 41,
+      "summary": "Create, render, and verify diagrams as code.",
+      "signals": ["docs_heavy", "mermaid"],
+      "prerequisites": [
+        {
+          "id": "mmdc",
+          "label": "Mermaid CLI",
+          "kind": "conditional",
+          "check": {"type": "command", "alternatives": ["mmdc"]},
+          "fallback": "Author Mermaid source and validate through an existing documentation renderer."
+        }
+      ]
+    },
+    "perplexity-research": {
+      "priority": 42,
+      "summary": "Run current, citation-backed web research through Perplexity MCP.",
+      "signals": ["research_work"],
+      "prerequisites": [
+        {
+          "id": "perplexity-provider",
+          "label": "Perplexity MCP/provider configuration",
+          "kind": "provider",
+          "check": {
+            "type": "env_or_file",
+            "environment": ["PERPLEXITY_API_KEY"],
+            "files": ["~/.perplexity-mcp.env"]
+          },
+          "fallback": "Use another approved current-research tool and label the substitution."
+        }
+      ]
+    }
+  }
+}

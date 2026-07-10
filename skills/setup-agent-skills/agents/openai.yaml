@@ -1,0 +1,7 @@
+interface:
+  display_name: "Set Up Agent Skills"
+  short_description: "Detect tools and recommend repository skills"
+  default_prompt: "Use $setup-agent-skills to inspect this computer and repository, check prerequisites, recommend the right skill pack, and offer a safe project-local installation."
+
+policy:
+  allow_implicit_invocation: false

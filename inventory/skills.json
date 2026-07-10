@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "skill_count": 17,
+  "skill_count": 18,
   "skills": [
     {
       "name": "agent-readiness-scoring",
@@ -127,6 +127,15 @@
       "file_count": 2,
       "bytes": 6103,
       "sha256": "996b22fbeb2de1ab298e4bd7bfa986bb9e4513be9bcd6244053a06f6c7059435"
+    },
+    {
+      "name": "setup-agent-skills",
+      "path": "skills/setup-agent-skills",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 5,
+      "bytes": 61944,
+      "sha256": "1345bc57ae023a27ea2a59ec5d576832fbdcaec85f3fe9fe58499f8da23ec3a8"
     },
     {
       "name": "staged-script-rollout",

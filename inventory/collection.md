@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository contains 17 generally useful skills selected from personal reusable packages and project-derived workflows. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
+This repository contains 18 generally useful skills: 17 engineering workflows selected from personal reusable packages and project-derived work, plus a repository-aware onboarding concierge. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
 
 The source search covered personal agent discovery directories, selected software repositories, duplicate worktrees, and two personal workstations. Exact duplicates and stale variants were collapsed.
 
@@ -23,6 +23,13 @@ The source search covered personal agent discovery directories, selected softwar
 - Two stale-PR rubrics became `triage-stale-pull-requests`.
 - Human-gated and unattended review-bot workflows became two modes in `handle-automated-code-review`.
 - Project queue guidance was folded into `postgres-queue-health`.
+
+## Onboarding
+
+`setup-agent-skills` wraps the upstream Skills CLI rather than duplicating its agent-path registry. A
+dependency-free Python doctor detects agent footprints, repository signals, installed scope, and
+conditional prerequisites; recommends evidence-backed outcome packs; and requires exact skill,
+scope, and agent approval before project or global installation.
 
 ## Notable Provenance
 

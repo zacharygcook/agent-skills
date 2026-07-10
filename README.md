@@ -4,9 +4,9 @@
 [![Install with skills.sh](https://img.shields.io/badge/install-skills.sh-ff2b88?logo=npm&logoColor=white)](#install-in-30-seconds)
 [![License: MIT](https://img.shields.io/badge/License-MIT-111111.svg)](LICENSE)
 
-Seventeen practical workflows for coding agents that need to do real engineering: make a repository
-agent-ready, run trustworthy E2E tests, operate long autonomous loops, review code, improve test
-coverage, diagnose Postgres queues, and ship risky scripts without losing control.
+Seventeen practical engineering workflows plus one onboarding concierge for coding agents: make a
+repository agent-ready, run trustworthy E2E tests, operate long autonomous loops, review code,
+improve test coverage, diagnose Postgres queues, and ship risky scripts without losing control.
 
 I built these skills to capture the engineering judgment I want agents to apply repeatedly—not just
 prompts that produce a plausible answer once. Each skill defines when it should activate, what a
@@ -58,6 +58,23 @@ npx skills@latest add zacharygcook/agent-skills --skill agent-readiness-scoring
 
 To make installed skills available globally instead of only in the current project, add `--global`.
 
+Want a tailored recommendation instead of browsing all 18 packages? Install only the concierge:
+
+```bash
+npx skills@latest add zacharygcook/agent-skills --skill setup-agent-skills
+```
+
+Then ask your agent:
+
+```text
+Use $setup-agent-skills to inspect this computer and repository, check prerequisites, recommend a
+small skill flight plan with evidence, and offer to vendor the approved skills into this project.
+```
+
+The read-only doctor detects coding agents, repository languages and infrastructure, existing skill
+copies, optional tools, and provider hints. It recommends outcome-based packs, explains every choice,
+and delegates approved project or global installation to the upstream Skills CLI.
+
 ## Quick start
 
 Ask your coding agent for a read-only readiness audit:
@@ -83,6 +100,9 @@ agent runs can inspect the same evidence.
 
 ### Agent-ready repositories and durable autonomous work
 
+- [`setup-agent-skills`](skills/setup-agent-skills) — Detect coding agents, fingerprint a repository,
+  check conditional prerequisites, recommend a focused flight plan, and safely vendor the approved
+  skills.
 - [`agent-readiness-scoring`](skills/agent-readiness-scoring) — Audit and iteratively improve how
   safely and effectively coding agents can work in a repository.
 - [`ralph-workflows`](skills/ralph-workflows) — Build resumable Ralph-style implementation loops with

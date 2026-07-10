@@ -119,6 +119,21 @@ def main() -> int:
         if len(ids) != 82 or len(set(ids)) != 82:
             errors.append("agent-readiness rubric must contain 82 unique criteria")
 
+    onboarding_catalog = (
+        ROOT / "skills" / "setup-agent-skills" / "references" / "catalog.json"
+    )
+    if onboarding_catalog.exists():
+        catalog_data = json.loads(onboarding_catalog.read_text(encoding="utf-8"))
+        catalog_skills = set(catalog_data.get("skills", {}))
+        package_skills = {directory.name for directory in skills}
+        if catalog_skills != package_skills:
+            missing = sorted(package_skills - catalog_skills)
+            extra = sorted(catalog_skills - package_skills)
+            errors.append(
+                "onboarding catalog must match skill packages "
+                f"(missing={missing}, extra={extra})"
+            )
+
     print(
         f"Validated {len(skills)} skills: "
         f"{len(skills)} reusable."
