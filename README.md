@@ -202,12 +202,30 @@ ln -s "$PWD/agent-skills/skills/agent-readiness-scoring" ~/.agents/skills/agent-
 ```bash
 python3 scripts/validate_skills.py
 python3 scripts/build_inventory.py --check
+python3 scripts/sync_flagship_skills.py check
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_sync_flagship_skills.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_agent_eval.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-workflows/scripts/test_ralph.py -v
 gitleaks dir --redact=100 --no-banner .
 ```
+
+## Canonical flagship packages
+
+`agent-readiness-scoring` and `ralph-workflows` are authored in dedicated canonical repositories and
+exported deterministically into this collection. Their locked source commit, version, exact file
+state, executable bits, symlinks, and package fingerprint live in `flagship-skills.lock.json`.
+
+Preview and apply a canonical release with:
+
+```bash
+python3 scripts/sync_flagship_skills.py update --skill ralph-workflows --source-root ../zach-ralph-method
+python3 scripts/sync_flagship_skills.py update --skill ralph-workflows --source-root ../zach-ralph-method --apply
+```
+
+Collection CI rejects direct edits or drift. Canonical repositories automatically propose update
+pull requests after a distributable release changes.
 
 See [`inventory/collection.md`](inventory/collection.md) for the collection's provenance and curation
 rules.

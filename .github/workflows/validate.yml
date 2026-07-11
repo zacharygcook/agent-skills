@@ -21,6 +21,10 @@ jobs:
         run: python3 scripts/validate_skills.py
       - name: Validate inventory freshness
         run: python3 scripts/build_inventory.py --check
+      - name: Verify canonical flagship package locks
+        run: python3 scripts/sync_flagship_skills.py check
+      - name: Test flagship synchronization safety
+        run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_sync_flagship_skills.py -v
       - name: Test readiness scoring engine
         run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
       - name: Test readiness behavioral evaluation harness

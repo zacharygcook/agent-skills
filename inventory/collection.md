@@ -38,10 +38,10 @@ scope, and agent approval before project or global installation.
 standalone-repository maintenance files. Its distributable scoring, reporting, comparison, package
 doctor/vendor, and behavioral-evaluation tools remain intact.
 
-`ralph-workflows` recovers an authored shell runtime from a private experimental branch. Project
+`ralph-workflows` is synchronized from the standalone `zach-ralph-method` canonical package. Project
 framework assumptions, paths, and hook commands were removed; heartbeat monitoring, stale-state
-recovery, event logs, resumability, scoped completion markers, and idempotent hooks were retained and
-released here under the collection's MIT license.
+recovery, event logs, resumability, evidence-gated completion, and idempotent hooks are released here
+under the collection's MIT license.
 
 `repo-cleanup-auditor` originated from a personal workflow design specifying six candidate categories and approval before mutation. Generator-added company/license metadata was removed; the collection is released under the repository-level MIT License.
 

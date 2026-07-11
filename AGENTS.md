@@ -10,5 +10,7 @@ This repository contains a small, public-facing collection of generally useful c
 - Consolidate overlaps and avoid packages that merely duplicate a major platform's maintained tooling.
 - Preserve explicit authorization gates for destructive, live, publishing, and external-state actions.
 - Update `inventory/skills.json` after changing a package.
-- Validate with `python3 scripts/validate_skills.py`, `python3 scripts/build_inventory.py --check`, readiness tests, and Gitleaks.
+- Treat `agent-readiness-scoring` and `ralph-workflows` as generated flagship packages. Change their canonical standalone repositories, then use `python3 scripts/sync_flagship_skills.py update --skill <name> --source-root <path> --apply`; never hand-edit their collection copies.
+- Keep `flagship-skills.lock.json` committed. CI must reject package drift, untracked deletions/additions, and fingerprint mismatches.
+- Validate with `python3 scripts/validate_skills.py`, `python3 scripts/build_inventory.py --check`, `python3 scripts/sync_flagship_skills.py check`, flagship tests, and Gitleaks.
 - Do not create a remote, publish, or make this repository public until the owner explicitly approves the review artifact.
