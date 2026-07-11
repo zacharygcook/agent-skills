@@ -23,8 +23,12 @@ jobs:
         run: python3 scripts/build_inventory.py --check
       - name: Test readiness scoring engine
         run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
+      - name: Test readiness behavioral evaluation harness
+        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_agent_eval.py -v
       - name: Test onboarding doctor
         run: PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
+      - name: Test hardened Ralph runtime
+        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-workflows/scripts/test_ralph.py -v
       - name: Scan for secrets
         uses: gitleaks/gitleaks-action@v2
         env:

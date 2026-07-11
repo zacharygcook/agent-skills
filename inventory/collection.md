@@ -17,7 +17,8 @@ The source search covered personal agent discovery directories, selected softwar
 
 ## Consolidations
 
-- Six Ralph packages became `ralph-workflows`, with operation-specific references.
+- Six Ralph packages plus an authored production-tested shell orchestrator became `ralph-workflows`,
+  with operation-specific references and a project-neutral runtime.
 - Two Mermaid packages became `mermaid-diagrams`.
 - Two local dashboard/browser suites became `local-web-e2e`.
 - Two stale-PR rubrics became `triage-stale-pull-requests`.
@@ -32,6 +33,15 @@ conditional prerequisites; recommends evidence-backed outcome packs; and require
 scope, and agent approval before project or global installation.
 
 ## Notable Provenance
+
+`agent-readiness-scoring` is synchronized from its standalone canonical package while excluding
+standalone-repository maintenance files. Its distributable scoring, reporting, comparison, package
+doctor/vendor, and behavioral-evaluation tools remain intact.
+
+`ralph-workflows` recovers an authored shell runtime from a private experimental branch. Project
+framework assumptions, paths, and hook commands were removed; heartbeat monitoring, stale-state
+recovery, event logs, resumability, scoped completion markers, and idempotent hooks were retained and
+released here under the collection's MIT license.
 
 `repo-cleanup-auditor` originated from a personal workflow design specifying six candidate categories and approval before mutation. Generator-added company/license metadata was removed; the collection is released under the repository-level MIT License.
 

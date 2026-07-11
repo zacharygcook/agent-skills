@@ -7,9 +7,9 @@
       "path": "skills/agent-readiness-scoring",
       "classification": "skills",
       "source": "curated",
-      "file_count": 8,
-      "bytes": 64010,
-      "sha256": "1a0c49ba8b8a8947a541bdb7764d152b722464912c1e0ed6944d0be2de665e6a"
+      "file_count": 13,
+      "bytes": 184468,
+      "sha256": "815237f7f347eb234d47780aedff1d9422d0361c0e240a7b4ab6a8ba3497b6da"
     },
     {
       "name": "ban-type-assertions",
@@ -115,9 +115,9 @@
       "path": "skills/ralph-workflows",
       "classification": "skills",
       "source": "curated",
-      "file_count": 8,
-      "bytes": 7054,
-      "sha256": "53f2e42a6601c396f9caa35da9bcff88363141ad83e9da413e16c3d229236ff2"
+      "file_count": 25,
+      "bytes": 93739,
+      "sha256": "0bb7bc5d49175dddb5dd84589c528ff5f0c46263c469aa650304e51b2ede5a17"
     },
     {
       "name": "repo-cleanup-auditor",
@@ -134,8 +134,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 61944,
-      "sha256": "1345bc57ae023a27ea2a59ec5d576832fbdcaec85f3fe9fe58499f8da23ec3a8"
+      "bytes": 62468,
+      "sha256": "b95406a7a13d6fdc23202dd4b12510ea6607fc350a0cab5c391aed0bc0383323"
     },
     {
       "name": "staged-script-rollout",

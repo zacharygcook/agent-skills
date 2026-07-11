@@ -209,9 +209,28 @@
     },
     "ralph-workflows": {
       "priority": 31,
-      "summary": "Create and operate resumable autonomous implementation sprints.",
+      "summary": "Install and operate a hardened resumable autonomous sprint runtime.",
       "signals": ["ralph"],
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "id": "python",
+          "label": "Python 3",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["python3", "python"]}
+        },
+        {
+          "id": "bash",
+          "label": "Bash",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["bash"]}
+        },
+        {
+          "id": "jq",
+          "label": "jq",
+          "kind": "required",
+          "check": {"type": "command", "alternatives": ["jq"]}
+        }
+      ]
     },
     "staged-script-rollout": {
       "priority": 32,

@@ -24,6 +24,7 @@ workflow:
 - Audit a repository against a transparent 82-criterion rubric.
 - Require concrete source, configuration, or command evidence for every passing judgment.
 - Produce a fair **owned score** and a **Factory-compatible score** from the same assessment.
+- Generate first-class HTML, PDF, Markdown, and JSON reports with provenance and progress deltas.
 - Respect repository-specific preferences without allowing documentation to impersonate tooling.
 - Select one valuable gap, implement a durable fix, validate it, rescore, and repeat.
 - Improve toward Level 5 or a target percentage one criterion-sized commit at a time.
@@ -92,9 +93,10 @@ this repository. Audit the repo and improve one readiness criterion at a time un
 5. Validate and rescore every fix, and make one focused commit per criterion.
 ```
 
-The skill includes a deterministic scoring engine, the full rubric, an assessment schema, preference
-templates, and remediation guidance. Reports are generated as Markdown and JSON so humans and later
-agent runs can inspect the same evidence.
+The skill includes a deterministic scoring engine, the full rubric, an assessment schema, behavioral
+evaluation fixtures, preference templates, and remediation guidance. Reports are generated as HTML,
+PDF when Chromium is available, Markdown, and JSON so humans and later agent runs can inspect the
+same evidence.
 
 ## What the collection is about
 
@@ -105,8 +107,9 @@ agent runs can inspect the same evidence.
   skills.
 - [`agent-readiness-scoring`](skills/agent-readiness-scoring) — Audit and iteratively improve how
   safely and effectively coding agents can work in a repository.
-- [`ralph-workflows`](skills/ralph-workflows) — Build resumable Ralph-style implementation loops with
-  sequential chunks, persistent scratchpad memory, manifests, and post-sprint hooks.
+- [`ralph-workflows`](skills/ralph-workflows) — Install and operate a hardened resumable runtime with
+  sequential chunks, persistent scratchpad memory, heartbeat/event logs, manifests, status tooling,
+  and idempotent post-sprint hooks.
 - [`repo-cleanup-auditor`](skills/repo-cleanup-auditor) — Scan an entire repository for evidence-backed
   deletion, move, and rename candidates, then wait for approval before changing anything.
 - [`staged-script-rollout`](skills/staged-script-rollout) — Take a live-writing script through dry run,
@@ -200,6 +203,9 @@ ln -s "$PWD/agent-skills/skills/agent-readiness-scoring" ~/.agents/skills/agent-
 python3 scripts/validate_skills.py
 python3 scripts/build_inventory.py --check
 PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
+PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_agent_eval.py -v
+PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
+PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-workflows/scripts/test_ralph.py -v
 gitleaks dir --redact=100 --no-banner .
 ```
 
