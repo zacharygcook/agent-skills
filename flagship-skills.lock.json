@@ -78,7 +78,7 @@
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "7778b7c5b05ff41322e6f91b237fdc46da936a52e3508083ac345de7e1c16e56"
+          "sha256": "62a4d2354f95f8284bbc47594ae92f67660fe2d032841e0f35eb70b3ccf91f9a"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -88,7 +88,7 @@
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "c9f56eb9348cbc8345bdaea7ca24c9f960e1598af05472794760a2682ff07a8c"
+          "sha256": "20c121886eb4f762044c6507745f6494525432ac22b41f5a73a8e5bf15b8b90e"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -259,7 +259,7 @@
         "recipes.just": {
           "executable": false,
           "kind": "file",
-          "sha256": "49d2c4b12e44b21dcb2c8e1d49d8fdb481f8f1919bda6e2490f868ccb82a7071"
+          "sha256": "b677a7ec5e0ab7ec2f9a00d6b569d04fb008e2f6530a69cd96aa9a47f51bdbaf"
         },
         "references/chunks.md": {
           "executable": false,
@@ -274,7 +274,7 @@
         "references/initialize.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "284f1ee11267e929f0fe653730aab65f84cb219a5a7519d765f950dc31563955"
+          "sha256": "e45324104a117ad3bf5c36e809b6e1bc5d86ba40b9deca767147e117404bdd98"
         },
         "references/review.md": {
           "executable": false,
@@ -312,10 +312,10 @@
           "sha256": "3b1ca711ae38214aaf2d91bfbee194127da8db54ef45add12912db55d62232ef"
         }
       },
-      "fingerprint": "2356ecb22586787151c45f426c1af2779a933e746931b3ff4141d3459f1e5189",
-      "source_commit": "54a11665f27d0dd8fe1b8ffb26f7b7c629ee8dbe",
+      "fingerprint": "401c2edfb65e8b0f2fc22634ba98613c933ce2317778cd7f56c72ccc6adec531",
+      "source_commit": "2f59378d929881e73b0ce80509cce66e296f2088",
       "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.6.3"
+      "version": "0.6.4"
     }
   },
   "schema_version": 1
