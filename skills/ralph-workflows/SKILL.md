@@ -12,13 +12,13 @@ Operate an autonomous implementation loop as a resumable state machine, not a on
 Install the bundled hardened Bash runtime only when the user asks to initialize or repair Ralph:
 
 ```bash
-python3 <skill-dir>/scripts/ralph.py init --repo <repository> --agent <agent> --test-command '<repo-native command>'
+python3 <skill-dir>/scripts/ralph.py init --repo <repository> --agent <agent> --chunk-validation-command '<fast repo-native command>' --sprint-validation-command '<full repo-native command>'
 ```
 
 For a parent directory containing independent child Git repositories, use multi-repo mode:
 
 ```bash
-python3 <skill-dir>/scripts/ralph.py init --repo <parent> --mode multi-repo --repos <repo-a> <repo-b> --primary-repo <repo-a> --agent <agent> --test-command '<cross-repo command>'
+python3 <skill-dir>/scripts/ralph.py init --repo <parent> --mode multi-repo --repos <repo-a> <repo-b> --primary-repo <repo-a> --agent <agent> --chunk-validation-command '<fast cross-repo command>' --sprint-validation-command '<full cross-repo command>'
 ```
 
 Initialization is non-destructive: it refuses an existing `.ralph/` unless `--update-runtime` is
@@ -39,6 +39,11 @@ Use `--agent custom --agent-command '<command>'` for another client. The trusted
 code. Runtime adapters support Codex, Claude Code, Amp, OpenCode, and Factory Droid, but verify the
 installed CLI's current flags before a live autonomous run.
 
+A repository may call the same fast command from its existing pre-commit system for earlier feedback.
+That hook complements Ralph; it never replaces the independent gate because hooks can be absent,
+bypassed, or inappropriate for slow and multi-repository validation. Ralph does not install Husky or
+another language-specific hook manager.
+
 ## Route the Task
 
 - New setup or reliability audit: [references/initialize.md](references/initialize.md)
@@ -53,13 +58,16 @@ Read only the references needed for the requested operation.
 ## Shared Invariants
 
 - Chunks are sequential, bounded, and have concrete acceptance criteria plus validation commands.
+- Completion markers are candidates: accept exactly one next sequential chunk only after the configured fast validation and chunk-owned commit evidence pass.
+- Failed chunk validation resets only that claim, records structured evidence, and gives the next fresh context a repair handoff through `SCRATCHPAD.md`.
 - Artifact paths are accurate because downstream hooks depend on them.
 - Every sprint has persistent scratchpad memory; agents read it first and append decisions, dead ends, and discoveries before exiting.
 - Manifests represent resumable phases and hook status explicitly.
-- Review, documentation, and test hooks are idempotent and leave durable completion markers.
+- Review, documentation, and final validation hooks are idempotent and leave durable completion markers.
 - Hook runtime state belongs under the run log, outside sprint work products.
 - Signals and interrupted exits reconcile state instead of silently losing completed work.
 - A sprint is not complete merely because implementation chunks pass; required post-sprint hooks must also finish.
+- Final sprint validation runs after review and documentation mutations; optional E2E runs last.
 - Automatic broad Git staging is off. Do not enable `RALPH_AUTO_COMMIT=I_ACCEPT_GIT_ADD_ALL` in a
   repository with concurrent dirty work; prefer agent-created scoped commits.
 - Multi-repo chunks name a configured child repository or `all`; manifests retain independent start

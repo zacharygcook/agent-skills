@@ -17,3 +17,4 @@ Use when creating a new sprint under `.ralph/sprints/`.
 2. `prompt.md` must instruct: read scratchpad first, append learnings before exit.
 3. `chunks.json` must include accurate `artifacts`; review/doc/test hooks depend on them.
 4. Sprint should be resumable: avoid assumptions that require uninterrupted execution.
+5. Configure a fast chunk gate and a comprehensive final sprint gate; do not rely only on agent-reported validation.
