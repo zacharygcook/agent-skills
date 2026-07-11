@@ -125,8 +125,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 48,
-      "bytes": 263241,
-      "sha256": "780b6179efd9c7bc1100d8a6472dbb6017094ec5944a6c30a31669e3171bcfc5"
+      "bytes": 265550,
+      "sha256": "561be09057dae586abe991be761e4180323e1f9f62e02678b507f2957bd72ea7"
     },
     {
       "name": "repo-cleanup-auditor",
