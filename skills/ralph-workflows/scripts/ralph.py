@@ -226,6 +226,133 @@ def parse_config(path: Path) -> dict[str, str]:
     return values
 
 
+def update_config(text: str, updates: dict[str, str]) -> str:
+    """Update shell assignments without disturbing operator comments or ordering."""
+    remaining = dict(updates)
+    output: list[str] = []
+    for raw in text.splitlines():
+        stripped = raw.strip()
+        if stripped and not stripped.startswith("#") and "=" in stripped:
+            key = stripped.split("=", 1)[0]
+            if key in remaining:
+                output.append(f"{key}={remaining.pop(key)}")
+                continue
+        output.append(raw)
+    if remaining and output and output[-1]:
+        output.append("")
+    output.extend(f"{key}={value}" for key, value in remaining.items())
+    return "\n".join(output) + "\n"
+
+
+def load_metadata(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        return {}
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def upgrade(arguments: argparse.Namespace) -> Path:
+    """Refresh managed runtime files and migrate validation configuration safely."""
+    repo = arguments.repo.resolve()
+    target = repo / ".ralph"
+    config_path = target / "config.env"
+    metadata_path = target / ".runtime-manifest.json"
+    if target.is_symlink() or not target.is_dir():
+        raise RalphError(f"Runtime not found or unsafe: {target}")
+    if config_path.is_symlink() or not config_path.is_file():
+        raise RalphError(f"Runtime configuration not found or unsafe: {config_path}")
+
+    metadata = load_metadata(metadata_path)
+    config = parse_config(config_path)
+    mode = metadata.get("mode") or config.get("RALPH_MODE", "monorepo")
+    if mode not in MODES:
+        raise RalphError(f"Unsupported installed runtime mode: {mode}")
+    repositories = metadata.get("repositories", [])
+    if not isinstance(repositories, list):
+        repositories = []
+    if mode == "multi-repo" and not repositories:
+        repositories = config.get("RALPH_REPOS", "").split()
+
+    chunk_command = (
+        arguments.chunk_validation_command
+        or config.get("RALPH_CHUNK_VALIDATION_COMMAND", "")
+    )
+    sprint_command = (
+        arguments.sprint_validation_command
+        or config.get("RALPH_SPRINT_VALIDATION_COMMAND", "")
+        or config.get("RALPH_TEST_COMMAND", "")
+    )
+    chunk_enabled = (
+        "false"
+        if arguments.disable_chunk_validation
+        else (
+            "true"
+            if arguments.chunk_validation_command
+            else config.get("RALPH_CHUNK_VALIDATION_ENABLED", "true")
+        )
+    )
+    sprint_enabled = (
+        "false"
+        if arguments.disable_sprint_validation
+        else (
+            "true"
+            if arguments.sprint_validation_command
+            else config.get(
+                "RALPH_SPRINT_VALIDATION_ENABLED",
+                config.get("RALPH_TESTS_ENABLED", "true"),
+            )
+        )
+    )
+    if chunk_enabled == "true" and not chunk_command:
+        raise RalphError(
+            "Upgrade requires --chunk-validation-command unless --disable-chunk-validation is explicit"
+        )
+    if sprint_enabled == "true" and not sprint_command:
+        raise RalphError(
+            "Upgrade requires --sprint-validation-command unless --disable-sprint-validation is explicit"
+        )
+
+    # Validate every managed destination before changing any runtime file.
+    sources = runtime_sources(mode)
+    resolved_target = target.resolve()
+    for relative in sources:
+        destination = target / relative
+        if destination.is_symlink():
+            raise RalphError(f"Refusing to replace managed symlink: {destination}")
+        if not destination.parent.resolve().is_relative_to(resolved_target):
+            raise RalphError(f"Refusing managed path outside runtime: {destination}")
+
+    migrated = update_config(
+        config_path.read_text(encoding="utf-8"),
+        {
+            "RALPH_MODE": mode,
+            "RALPH_CHUNK_VALIDATION_ENABLED": chunk_enabled,
+            "RALPH_SPRINT_VALIDATION_ENABLED": sprint_enabled,
+            "RALPH_CHUNK_VALIDATION_COMMAND": shell_value(chunk_command),
+            "RALPH_SPRINT_VALIDATION_COMMAND": shell_value(sprint_command),
+        },
+    )
+    checksums = copy_runtime(target, mode)
+    temporary_config = config_path.with_name(".config.env.tmp")
+    temporary_config.write_text(migrated, encoding="utf-8")
+    temporary_config.replace(config_path)
+    write_json(
+        metadata_path,
+        {
+            "schema_version": "1.0",
+            "runtime_version": runtime_version(),
+            "mode": mode,
+            "repositories": repositories,
+            "managed_files": checksums,
+            "previous_runtime_version": metadata.get("runtime_version"),
+        },
+    )
+    return target
+
+
 def validate_sprint(
     path: Path, mode: str = "monorepo", repositories: tuple[str, ...] = ()
 ) -> list[dict[str, str]]:
@@ -371,6 +498,17 @@ def validate(repo: Path) -> dict[str, Any]:
                 "detail": "installation manifest missing",
             }
         )
+    installed_version = metadata.get("runtime_version")
+    expected_version = runtime_version()
+    findings.append(
+        {
+            "status": "pass" if installed_version == expected_version else "fail",
+            "check": "runtime:version",
+            "detail": expected_version
+            if installed_version == expected_version
+            else f"installed {installed_version or 'unknown'}; available {expected_version}; run upgrade",
+        }
+    )
     config_path = root / "config.env"
     if not config_path.is_file():
         findings.append(
@@ -561,6 +699,14 @@ def build_parser() -> argparse.ArgumentParser:
     init_parser.add_argument("--disable-chunk-validation", action="store_true")
     init_parser.add_argument("--disable-sprint-validation", action="store_true")
     init_parser.add_argument("--update-runtime", action="store_true")
+    upgrade_parser = subparsers.add_parser(
+        "upgrade", help="Safely refresh an installed runtime and migrate validation gates."
+    )
+    upgrade_parser.add_argument("--repo", type=Path, default=Path.cwd())
+    upgrade_parser.add_argument("--chunk-validation-command")
+    upgrade_parser.add_argument("--sprint-validation-command")
+    upgrade_parser.add_argument("--disable-chunk-validation", action="store_true")
+    upgrade_parser.add_argument("--disable-sprint-validation", action="store_true")
     validate_parser = subparsers.add_parser(
         "validate", help="Validate runtime, configuration, and sprints."
     )
@@ -591,6 +737,11 @@ def main() -> int:
             report = validate(arguments.repo)
             print_validation(report, arguments.json)
             return 0 if report["ok"] else 1
+        if arguments.command == "upgrade":
+            target = upgrade(arguments)
+            print(f"Upgraded Ralph runtime to {runtime_version()}: {target}")
+            print("Operator configuration and sprint state were preserved.")
+            return 0
         status = arguments.repo.resolve() / ".ralph" / "status.sh"
         if not status.is_file():
             raise RalphError(f"Runtime not found: {status}")

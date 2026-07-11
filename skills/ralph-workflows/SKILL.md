@@ -9,6 +9,17 @@ Operate an autonomous implementation loop as a resumable state machine, not a on
 
 ## Deterministic runtime
 
+Vendor this skill into a project with the upstream Skills CLI:
+
+```bash
+npx skills@latest add zacharygcook/zach-ralph-method --skill ralph-workflows --copy -y
+```
+
+The CLI detects the active coding agent and creates a project-local skill copy containing the
+instructions, installer, and runtime templates. Use `--agent <name>` only to target a specific agent;
+`--agent '*'` deliberately creates adapter copies for every supported client. Run the bundled
+installer from the detected skill directory.
+
 Install the bundled hardened Bash runtime only when the user asks to initialize or repair Ralph:
 
 ```bash
@@ -26,6 +37,14 @@ explicit, preserves configuration and sprint state during an update, and leaves 
 disarmed. Add `--approve-unattended` only when the user has authorized an autonomous run. Disable a
 hook explicitly when it is genuinely outside the repository's workflow; skipped hooks remain visible
 in the manifest instead of being reported as completed work.
+
+Upgrade an existing runtime without replacing operator configuration, sprints, logs, or scratchpad
+state. Legacy `RALPH_TEST_COMMAND` values migrate to the sprint validation gate; a missing chunk gate
+must be supplied or explicitly disabled:
+
+```bash
+python3 <skill-dir>/scripts/ralph.py upgrade --repo <repository> --chunk-validation-command '<fast repo-native command>' --sprint-validation-command '<full repo-native command>'
+```
 
 Validate installed runtime, fingerprints, configuration, and sprint structure with:
 
