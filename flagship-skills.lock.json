@@ -293,8 +293,8 @@
         }
       },
       "fingerprint": "a3df28f155e16cf0fa49b629ec8c04a6633c4162f1066fd0022500f15dc30836",
-      "source_commit": "5ad20bce542413b55f02f9a44d406ab2c21adf31",
-      "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
+      "source_commit": "23ba3ee6bc0af9f988ea35c8b6f1090ec77f262d",
+      "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
       "version": "0.5.1"
     }
   },
