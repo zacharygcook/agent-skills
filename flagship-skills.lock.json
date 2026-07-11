@@ -69,8 +69,8 @@
         }
       },
       "fingerprint": "60253130f0e6d3714a9e262b4a1fd6b12f93a8b3051b202446c2a01ce0c8db5d",
-      "source_commit": "c5764a35fc88e79298e162d8d50af90b59ce886b",
-      "source_repository": "git@github.com:zacharygcook/agent-readiness-scoring.git",
+      "source_commit": "3232a245ce3d59ea00c0a59b7dc463fbc15d1282",
+      "source_repository": "https://github.com/zacharygcook/agent-readiness-scoring",
       "version": "0.3.0"
     },
     "ralph-workflows": {
