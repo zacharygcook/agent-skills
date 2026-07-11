@@ -78,7 +78,7 @@
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "a16a61c7533454f190eb8d57cefcb8eed6c15f356875e06566da4f868595c2d5"
+          "sha256": "52364fb3a2ef44f5d5bc72e45449eec27ed854f0cc78a3c148a345d938e75462"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -88,7 +88,7 @@
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "aba951626c8690ce493cbc8f018205bb468003f61fbf00fd3d3c71cebabc0177"
+          "sha256": "a7711142bc1fc55c16b9147a1503a4f2c4717be5c1e4437772a047f52ef81db2"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -284,18 +284,18 @@
         "scripts/ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "88fb739d25ff009585c9775ecc4e6637aef850becb012d6fae2d1a7f08ede889"
+          "sha256": "f0fca011e970b4615f0a6b001905f82cb8c74015dd2a798f7abbf456aefab623"
         },
         "scripts/test_ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "596e3b800e02c21560676e8a6d943e3d5f6f844a6f6618dbd778286ff9138d60"
+          "sha256": "6555950de4f44ec4e021d60bc18343ec4e5d0aefff9d55b4ab0b29bd805e33ee"
         }
       },
-      "fingerprint": "a3df28f155e16cf0fa49b629ec8c04a6633c4162f1066fd0022500f15dc30836",
-      "source_commit": "23ba3ee6bc0af9f988ea35c8b6f1090ec77f262d",
+      "fingerprint": "42abd547bac92c81163432e6414d8814c1060311a2184a52da87f4834980c737",
+      "source_commit": "14be2ca1261f70eed2edb327d65bc123e8a27b59",
       "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.5.1"
+      "version": "0.5.4"
     }
   },
   "schema_version": 1
