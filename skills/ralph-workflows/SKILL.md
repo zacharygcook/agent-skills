@@ -15,6 +15,12 @@ Install the bundled hardened Bash runtime only when the user asks to initialize 
 python3 <skill-dir>/scripts/ralph.py init --repo <repository> --agent <agent> --test-command '<repo-native command>'
 ```
 
+For a parent directory containing independent child Git repositories, use multi-repo mode:
+
+```bash
+python3 <skill-dir>/scripts/ralph.py init --repo <parent> --mode multi-repo --repos <repo-a> <repo-b> --primary-repo <repo-a> --agent <agent> --test-command '<cross-repo command>'
+```
+
 Initialization is non-destructive: it refuses an existing `.ralph/` unless `--update-runtime` is
 explicit, preserves configuration and sprint state during an update, and leaves autonomous execution
 disarmed. Add `--approve-unattended` only when the user has authorized an autonomous run. Disable a
@@ -56,5 +62,7 @@ Read only the references needed for the requested operation.
 - A sprint is not complete merely because implementation chunks pass; required post-sprint hooks must also finish.
 - Automatic broad Git staging is off. Do not enable `RALPH_AUTO_COMMIT=I_ACCEPT_GIT_ADD_ALL` in a
   repository with concurrent dirty work; prefer agent-created scoped commits.
+- Multi-repo chunks name a configured child repository or `all`; manifests retain independent start
+  and end commit ranges, and agents commit separately inside each changed repository.
 
 Adapt filenames when a repository uses an equivalent orchestration convention, but preserve these semantics.

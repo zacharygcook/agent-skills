@@ -115,9 +115,9 @@
       "path": "skills/ralph-workflows",
       "classification": "skills",
       "source": "curated",
-      "file_count": 25,
-      "bytes": 93739,
-      "sha256": "0bb7bc5d49175dddb5dd84589c528ff5f0c46263c469aa650304e51b2ede5a17"
+      "file_count": 42,
+      "bytes": 168135,
+      "sha256": "b9ece2b55470abab1a60b23a9c5a3a353e136e66138e2715ee07e8d53f5fcdaf"
     },
     {
       "name": "repo-cleanup-auditor",

@@ -2,6 +2,10 @@
 
 Use when setting up `.ralph/` for a new project or auditing an existing setup.
 
+First determine topology. Monorepo mode installs into one Git repository. Multi-repo mode installs
+into a shared parent containing two or more independent child Git repositories and requires
+`--mode multi-repo --repos <names...> --primary-repo <name>`.
+
 ## Required checks
 
 1. Ensure the equivalent core structure exists:
@@ -44,3 +48,8 @@ Use when setting up `.ralph/` for a new project or auditing an existing setup.
    - broad auto-commit is disabled
    - project-specific test/E2E commands live in `config.env`, not the runtime
    - `bash`, `git`, `jq`, and Python 3 are present
+   - multi-repo chunks name a configured repository or `all`, and each repository keeps an independent commit boundary
+
+Install or update with `scripts/ralph.py`, then run its `validate` command before live execution. In
+multi-repo mode, ensure project-supplied validation commands cover contracts that cross repository
+boundaries.

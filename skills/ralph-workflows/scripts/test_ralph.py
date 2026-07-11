@@ -13,7 +13,7 @@ import unittest
 from pathlib import Path
 
 
-MODULE_PATH = Path(__file__).with_name("ralph.py")
+MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts" / "ralph.py"
 SPEC = importlib.util.spec_from_file_location("ralph", MODULE_PATH)
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError("Unable to load ralph.py")
@@ -68,7 +68,7 @@ def replace_config(path: Path, key: str, value: str) -> None:
     path.write_text("\n".join(output) + "\n", encoding="utf-8")
 
 
-def create_sprint(root: Path, name: str = "1-demo") -> Path:
+def create_sprint(root: Path, name: str = "1-demo", repo: str | None = None) -> Path:
     sprint = root / ".ralph" / "sprints" / name
     sprint.mkdir(parents=True)
     for filename in (
@@ -82,17 +82,20 @@ def create_sprint(root: Path, name: str = "1-demo") -> Path:
         "Read SCRATCHPAD.md first. Update chunks.json and emit RALPH_CHUNK_COMPLETE.\n",
         encoding="utf-8",
     )
+    chunk = {
+        "id": 1,
+        "title": "Complete fixture",
+        "passes": False,
+        "acceptance_criteria": ["Fixture becomes complete"],
+        "artifacts": ["README.md"],
+    }
+    if repo:
+        chunk["repo"] = repo
     (sprint / "chunks.json").write_text(
         json.dumps(
             {
                 "chunks": [
-                    {
-                        "id": 1,
-                        "title": "Complete fixture",
-                        "passes": False,
-                        "acceptance_criteria": ["Fixture becomes complete"],
-                        "artifacts": ["README.md"],
-                    }
+                    chunk
                 ]
             },
             indent=2,
@@ -105,11 +108,14 @@ def create_sprint(root: Path, name: str = "1-demo") -> Path:
 
 class RalphRuntimeTest(unittest.TestCase):
     def test_recovered_shell_runtime_has_valid_syntax(self) -> None:
-        scripts = [
-            ralph.RUNTIME_ROOT / relative
-            for relative in ralph.MANAGED_RUNTIME_FILES
-            if relative.endswith(".sh")
-        ]
+        scripts = sorted(
+            {
+                path
+                for mode in ralph.MODES
+                for relative, path in ralph.runtime_sources(mode).items()
+                if relative.endswith(".sh")
+            }
+        )
         result = run("bash", "-n", *(str(path) for path in scripts))
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertGreaterEqual(len(scripts), 7)
@@ -162,8 +168,63 @@ class RalphRuntimeTest(unittest.TestCase):
             self.assertIn("CURRENT_SPRINT=1-demo", config.read_text(encoding="utf-8"))
             self.assertTrue((sprint / "SCRATCHPAD.md").is_file())
             self.assertEqual(
-                ralph.sha256(loop), ralph.sha256(ralph.RUNTIME_ROOT / "loop.sh")
+                ralph.sha256(loop), ralph.sha256(ralph.runtime_sources("monorepo")["loop.sh"])
             )
+
+    def test_multi_repo_init_and_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "project with spaces"
+            root.mkdir()
+            initialize_repo(root / "api")
+            initialize_repo(root / "web")
+            result = run_cli(
+                "init", "--repo", str(root), "--mode", "multi-repo",
+                "--repos", "api", "web", "--disable-tests",
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            create_sprint(root, repo="api")
+            replace_config(root / ".ralph" / "config.env", "CURRENT_SPRINT", "1-demo")
+            report = run_cli("validate", "--repo", str(root), "--json")
+            self.assertEqual(report.returncode, 0, report.stdout)
+            metadata = json.loads((root / ".ralph" / ".runtime-manifest.json").read_text())
+            self.assertEqual(metadata["mode"], "multi-repo")
+            self.assertEqual(metadata["repositories"], ["api", "web"])
+
+    def test_clean_room_multi_repo_loop_tracks_each_repository(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "project"
+            root.mkdir()
+            initialize_repo(root / "service")
+            initialize_repo(root / "dashboard")
+            fake_agent = root / "fake_agent.py"
+            fake_agent.write_text(
+                "import json, os, pathlib\n"
+                "prompt = pathlib.Path(os.environ['RALPH_PROMPT_FILE'])\n"
+                "chunks = prompt.parent / 'chunks.json'\n"
+                "data = json.loads(chunks.read_text())\n"
+                "data['chunks'][0]['passes'] = True\n"
+                "chunks.write_text(json.dumps(data, indent=2) + '\\n')\n"
+                "print('RALPH_CHUNK_COMPLETE')\n",
+                encoding="utf-8",
+            )
+            command = f"{shlex.quote(sys.executable)} {shlex.quote(str(fake_agent))}"
+            initialized = run_cli(
+                "init", "--repo", str(root), "--mode", "multi-repo",
+                "--repos", "service", "dashboard", "--agent", "custom",
+                "--agent-command", command, "--approve-unattended",
+                "--disable-review", "--disable-documentation", "--disable-tests",
+            )
+            self.assertEqual(initialized.returncode, 0, initialized.stderr)
+            sprint = create_sprint(root, repo="service")
+            replace_config(root / ".ralph" / "config.env", "CURRENT_SPRINT", "1-demo")
+            loop = run(str(root / ".ralph" / "loop.sh"), cwd=root)
+            self.assertEqual(loop.returncode, 0, f"{loop.stdout}\n{loop.stderr}")
+            manifest = json.loads((sprint / "manifest.json").read_text())
+            self.assertEqual(manifest["phase"], "hooks_done")
+            self.assertEqual(set(manifest["repos"]), {"service", "dashboard"})
+            for repo in ("service", "dashboard"):
+                self.assertTrue(manifest["repos"][repo]["start_commit"])
+                self.assertTrue(manifest["repos"][repo]["end_commit"])
 
     def test_update_refuses_managed_symlink_without_partial_write(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
