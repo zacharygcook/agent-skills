@@ -48,11 +48,13 @@ class DoctorTest(unittest.TestCase):
             "agents": [],
         }
 
-    def test_catalog_defines_six_packs_and_all_eighteen_skills(self) -> None:
-        self.assertEqual(len(self.catalog["packs"]), 6)
-        self.assertEqual(len(self.catalog["skills"]), 18)
+    def test_catalog_defines_seven_packs_and_all_twenty_skills(self) -> None:
+        self.assertEqual(len(self.catalog["packs"]), 7)
+        self.assertEqual(len(self.catalog["skills"]), 20)
         self.assertIn("setup-agent-skills", self.catalog["skills"])
         self.assertIn("agent-readiness-scoring", self.catalog["skills"])
+        self.assertIn("write-public-readme", self.catalog["skills"])
+        self.assertIn("design-human-first-cli", self.catalog["skills"])
 
     def test_fingerprint_detects_web_postgres_queue_and_review_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -66,12 +68,15 @@ class DoctorTest(unittest.TestCase):
                 "package.json",
                 json.dumps(
                     {
+                        "bin": {"fixture": "bin/fixture.js"},
                         "dependencies": {"next": "1", "pg": "1"},
                         "devDependencies": {"@playwright/test": "1", "knip": "1"},
                     }
                 ),
             )
             self.write(root, "tsconfig.json", "{}")
+            self.write(root, "README.md", "# Public fixture")
+            self.write(root, "bin/fixture.js", "console.log('fixture')")
             self.write(root, "playwright.config.ts", "export default {}")
             self.write(
                 root,
@@ -88,6 +93,7 @@ class DoctorTest(unittest.TestCase):
             for expected in (
                 "automated_review",
                 "browser_e2e",
+                "cli",
                 "docs_heavy",
                 "frontend",
                 "git",
@@ -96,6 +102,7 @@ class DoctorTest(unittest.TestCase):
                 "live_scripts",
                 "postgres",
                 "queue",
+                "readme",
                 "tests",
                 "typescript",
                 "web",

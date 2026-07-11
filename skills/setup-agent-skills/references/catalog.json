@@ -66,6 +66,15 @@
         "mermaid-diagrams",
         "local-html-pdf-reports"
       ]
+    },
+    "public-project": {
+      "title": "Public Project Experience",
+      "description": "Turn a repository into a clear, trustworthy public product with a frictionless command surface.",
+      "skills": [
+        "setup-agent-skills",
+        "write-public-readme",
+        "design-human-first-cli"
+      ]
     }
   },
   "skills": {
@@ -106,6 +115,18 @@
       "priority": 2,
       "summary": "Audit deletion, move, and rename candidates before repository cleanup.",
       "signals": ["always"],
+      "prerequisites": []
+    },
+    "write-public-readme": {
+      "priority": 3,
+      "summary": "Write a polished public README with verified installation, quick start, trust, and progressive disclosure.",
+      "signals": ["readme"],
+      "prerequisites": []
+    },
+    "design-human-first-cli": {
+      "priority": 4,
+      "summary": "Design short human commands, interactive setup, idempotent bootstrap, and explicit automation interfaces.",
+      "signals": ["cli"],
       "prerequisites": []
     },
     "code-review": {

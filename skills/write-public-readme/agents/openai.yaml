@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Public README"
+  short_description: "Create polished public-facing repository READMEs"
+  default_prompt: "Use $write-public-readme to rewrite this repository README for first-time public users."

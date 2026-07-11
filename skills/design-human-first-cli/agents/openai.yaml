@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Human-First CLI"
+  short_description: "Design short, discoverable command-line workflows"
+  default_prompt: "Use $design-human-first-cli to make this command-line workflow frictionless for human operators."

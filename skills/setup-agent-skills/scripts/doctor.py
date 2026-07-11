@@ -406,6 +406,14 @@ def fingerprint_repository(root: Path) -> dict[str, Any]:
     if (root / ".ralph").exists():
         add("ralph", ".ralph/")
 
+    readme_paths = [
+        path
+        for path in files
+        if len(path.parts) == 1 and path.name.lower().startswith("readme")
+    ]
+    if readme_paths:
+        add("readme", *readme_paths[:2])
+
     manifest_paths = [
         path
         for path in files
@@ -416,6 +424,26 @@ def fingerprint_repository(root: Path) -> dict[str, Any]:
         )
     ][:120]
     manifest_text = "\n".join(safe_text(root / path) for path in manifest_paths).lower()
+
+    cli_paths = [
+        path
+        for path in files
+        if (path.parts and path.parts[0].lower() == "bin")
+        or path.stem.lower() in {"cli", "command", "commands"}
+        or any(part.lower() in {"cli", "commands"} for part in path.parts[:-1])
+    ]
+    package_bins: list[Path] = []
+    for path in manifest_paths:
+        if path.name != "package.json":
+            continue
+        try:
+            manifest = json.loads(safe_text(root / path))
+        except json.JSONDecodeError:
+            continue
+        if isinstance(manifest, dict) and manifest.get("bin"):
+            package_bins.append(path)
+    if cli_paths or package_bins:
+        add("cli", *(cli_paths[:4] or package_bins[:2]))
 
     typescript_files = [
         path for path in files if path.suffix.lower() in {".ts", ".tsx"}

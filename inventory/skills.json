@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "skill_count": 18,
+  "skill_count": 20,
   "skills": [
     {
       "name": "agent-readiness-scoring",
@@ -28,6 +28,15 @@
       "file_count": 2,
       "bytes": 3313,
       "sha256": "13f06dc387bfc2d45aa586652fbec4e20c01ea5ee30619be635b323cb50875e3"
+    },
+    {
+      "name": "design-human-first-cli",
+      "path": "skills/design-human-first-cli",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 4506,
+      "sha256": "5c6e2a3fa3ca9d1aeb6681ba812fb5494964228d825c007f7cdf17f5f956fb69"
     },
     {
       "name": "expand-test-coverage",
@@ -134,8 +143,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 62468,
-      "sha256": "b95406a7a13d6fdc23202dd4b12510ea6607fc350a0cab5c391aed0bc0383323"
+      "bytes": 64565,
+      "sha256": "e6d5a142f63acf6f4cdb29164072335602512fe059b25c5582ba499b760ccbd9"
     },
     {
       "name": "staged-script-rollout",
@@ -163,6 +172,15 @@
       "file_count": 2,
       "bytes": 2322,
       "sha256": "8dc2621d80cf496be191c30a355ec0fb3e0814490ac081a45fc94f94469d1c6c"
+    },
+    {
+      "name": "write-public-readme",
+      "path": "skills/write-public-readme",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 2,
+      "bytes": 3968,
+      "sha256": "0d1a97311a24dcadbde5c509d2e25510550e1cda7e7e6ad26b88ed4d936b31d4"
     }
   ]
 }
