@@ -78,17 +78,17 @@
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "194a6087955a41f171426af0d65ac5bffa8a0cd14cc1d9556f2c1b4817fdf96b"
+          "sha256": "b23c9e92a6cc6475e552e7e96a891f0a02334fce42396260cb9a230621324db4"
         },
         "agents/openai.yaml": {
           "executable": false,
           "kind": "file",
-          "sha256": "8e9f8491de539f00bd57feab4afa97973c92cc2c524999bf6d7c45d58eb921d2"
+          "sha256": "7fd3dcd268e87e34704468495758d7183d20b1e154fc9d3e6a94c6384c4e224d"
         },
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "ac3bf208eb88be6542e3fc750b511b112cf25bc40e46dca2a50819e43cf59096"
+          "sha256": "97a5d6e540a6120d09c39ddb667e0e8e2bac7fcc2ffef813b82e08fd60365bce"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -103,7 +103,7 @@
         "assets/templates/monorepo/config.env.template": {
           "executable": false,
           "kind": "file",
-          "sha256": "2531f786337637b3c7ace513c7cdd695efb04733c9f995ddd6b1812b115c633b"
+          "sha256": "28bf6a7d8de43ae4a866006a3365da699439d05a09adc5a0a86dff3f654d7e33"
         },
         "assets/templates/monorepo/format-codex-stream.py": {
           "kind": "symlink",
@@ -136,7 +136,7 @@
         "assets/templates/monorepo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "368168c7512faf4292928901cb335a32bcf8356c983c3b20e3ce6c20c5c400cd"
+          "sha256": "ce9f93f71e348319fe5d5bed268cfa5aea72253645cbee1b81d570e8cdfea418"
         },
         "assets/templates/monorepo/prompt.md.template": {
           "executable": false,
@@ -161,7 +161,7 @@
         "assets/templates/monorepo/status.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "99ee30470a2459b2fdfd28814b6419331b0770a50833a7aaff3f20fbe3052f3f"
+          "sha256": "62e37efd473c2493d80159dc4a4fd6a5576ba6e7289de05a3777039efd094e2c"
         },
         "assets/templates/multi-repo/CLAUDE.md.parent.template": {
           "executable": false,
@@ -171,7 +171,7 @@
         "assets/templates/multi-repo/config.env.template": {
           "executable": false,
           "kind": "file",
-          "sha256": "2c1bc19a6539ec7cd0573721956465a2d8896f232fcf60a6a0aab0705561c117"
+          "sha256": "48f180f149f7294dec445d537f3ea8cb2a6fe60fb1f680efd4d6caf0346c70f9"
         },
         "assets/templates/multi-repo/format-codex-stream.py": {
           "kind": "symlink",
@@ -204,7 +204,7 @@
         "assets/templates/multi-repo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "b95a3ce29e93e22f9c243750742f8a0cb53c207c0fa6ed28df37fc2ad8684c63"
+          "sha256": "71d9286d48655c33b0c15d03e3574d26fad18c61158a2d89c98aed544a4aa806"
         },
         "assets/templates/multi-repo/prompt.md.template": {
           "executable": false,
@@ -229,7 +229,7 @@
         "assets/templates/multi-repo/status.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "1792de9f23e9fcacf49f06c46e0ff0339ffb9a506c9b107b2c91bfa10ed8b602"
+          "sha256": "c3f4a8d4eb9b408522ec1999ebef77535a8b21a116a1ae2aaa64b95054876008"
         },
         "assets/templates/shared/format-codex-stream.py": {
           "executable": true,
@@ -249,17 +249,22 @@
         "assets/templates/shared/ralph-common.sh.template": {
           "executable": false,
           "kind": "file",
-          "sha256": "fbe0b0f88adf53ed43ad1b0a9190c28c8401959a95e42ea050a1500d813e7c39"
+          "sha256": "a4d5252f48f5da71ea725cbf3ad9054b11d62a0ebedb3c650edf998d259ad6a2"
         },
         "references/chunks.md": {
           "executable": false,
           "kind": "file",
           "sha256": "a0b5a1133367b57380c8f87a650508c5c0222366878461715779c06842796dc0"
         },
+        "references/first-run.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "9ec1e7b80ce998907f4be65562113a177b7d3d1ce3bc6294fb9d58c77cec4d1f"
+        },
         "references/initialize.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "c607da631469377f52dc485905d7e1b77a1f244fdef9b5f67794144a17124257"
+          "sha256": "ec966567c148ac34de2d354089cc03ae5b9c9a1974f824a59824d3340f88df8e"
         },
         "references/review.md": {
           "executable": false,
@@ -284,18 +289,18 @@
         "scripts/ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "f0fca011e970b4615f0a6b001905f82cb8c74015dd2a798f7abbf456aefab623"
+          "sha256": "29d653998dc1b5b7bdbe638c1a4442cc214f147bf5a6410affbd83b01ef22d93"
         },
         "scripts/test_ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "6555950de4f44ec4e021d60bc18343ec4e5d0aefff9d55b4ab0b29bd805e33ee"
+          "sha256": "aa9852d9bc19efaee900546857fe727a132eb50d54ab6646e0488aa5dd486efb"
         }
       },
-      "fingerprint": "1faa2d343609c3721624a8cc1dcca1ad1e9c6b13712f2611c047743ee818ca83",
-      "source_commit": "dbf6ac247e3892882e365b976218d04f069015d3",
+      "fingerprint": "897ec8cc8e23323c37f542fd7491eabab872d81e8bcd3b65695577f22f22bc1a",
+      "source_commit": "c7adb9df3511270ce419f01ef7c48e640ad2ce38",
       "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.5.5"
+      "version": "0.6.0"
     }
   },
   "schema_version": 1
