@@ -78,7 +78,7 @@
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "c6b14d7fa91aa3691669b48f1f1bc811d2e637a0abb3775737f25db719b8a7d6"
+          "sha256": "c309f373b79b1c2f2cb5b9bf6fa585be8ce62999b472cb365cb949f649815e46"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -88,7 +88,7 @@
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "87b241b275c591694846560e9879f50c9da3150f854efdabd782c539772f3033"
+          "sha256": "a466ef209f5c3aee5ff0c702e2e9d5cced4783d2a655e8ab66330f21a5557b3f"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -116,7 +116,7 @@
         "assets/templates/monorepo/hooks/document.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "1e0f8303557471b10a35e9dfc9f402f941bb76c99decf0dfe53d9c8a6f7b1321"
+          "sha256": "8d2f8398bff0e40060accf30867320fd7015d1b7a138ce1f8096dc870b2a78d1"
         },
         "assets/templates/monorepo/hooks/post-sprint.sh.template": {
           "executable": true,
@@ -126,7 +126,7 @@
         "assets/templates/monorepo/hooks/review.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "9d2a9efc38e4bff96f0255ffe2c6a6ef339619b8871ce460916a427e57d1ff52"
+          "sha256": "3dc35e071ab6062d3a057371496cecc38902e18b0b620084b77391abc87862fb"
         },
         "assets/templates/monorepo/hooks/test.sh.template": {
           "executable": true,
@@ -136,7 +136,7 @@
         "assets/templates/monorepo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "9a8a7448485b19df1437176813f39ac110c41786854b0b98b3af7689b5fca344"
+          "sha256": "c1c37ee18743fcb8ca2eb06a9f9deff98a9a0c9144a3419cdd0ac0fcecd229f5"
         },
         "assets/templates/monorepo/prompt.md.template": {
           "executable": false,
@@ -161,7 +161,7 @@
         "assets/templates/monorepo/status.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "62e37efd473c2493d80159dc4a4fd6a5576ba6e7289de05a3777039efd094e2c"
+          "sha256": "0d8935dc85f2edd8b1d10f7c572cc6724b7a46361d325c9cd6209717808954d1"
         },
         "assets/templates/multi-repo/CLAUDE.md.parent.template": {
           "executable": false,
@@ -184,7 +184,7 @@
         "assets/templates/multi-repo/hooks/document.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "1e0f8303557471b10a35e9dfc9f402f941bb76c99decf0dfe53d9c8a6f7b1321"
+          "sha256": "8d2f8398bff0e40060accf30867320fd7015d1b7a138ce1f8096dc870b2a78d1"
         },
         "assets/templates/multi-repo/hooks/post-sprint.sh.template": {
           "executable": true,
@@ -194,7 +194,7 @@
         "assets/templates/multi-repo/hooks/review.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "725d0b972b1d68701db07e7aff8b6d75d478010eb6420a5024ebb9a236951212"
+          "sha256": "84ff4c4f222a022f2bb047c1b1fdd8cf22d3e59702c6ab3c831b8d4044e875b9"
         },
         "assets/templates/multi-repo/hooks/test.sh.template": {
           "executable": true,
@@ -204,7 +204,7 @@
         "assets/templates/multi-repo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "da422a2d062c514d723a7d3e42a19386cd82654d6688268c361e43bba2cb5b02"
+          "sha256": "89d5241ac67230044960be06c4b4828ecaa57db2c9f370d8f97170e454d9d40e"
         },
         "assets/templates/multi-repo/prompt.md.template": {
           "executable": false,
@@ -229,7 +229,7 @@
         "assets/templates/multi-repo/status.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "c3f4a8d4eb9b408522ec1999ebef77535a8b21a116a1ae2aaa64b95054876008"
+          "sha256": "6b0539ca42bf75d758c9cc7e9eda509559f4f3ce54ed2e7050106c839cc51bde"
         },
         "assets/templates/shared/format-codex-stream.py": {
           "executable": true,
@@ -249,7 +249,7 @@
         "assets/templates/shared/ralph-common.sh.template": {
           "executable": false,
           "kind": "file",
-          "sha256": "a4d5252f48f5da71ea725cbf3ad9054b11d62a0ebedb3c650edf998d259ad6a2"
+          "sha256": "abfdb2621564b0e02c191b805c479b5453118407482711dca8748f49a2fdcfbf"
         },
         "references/chunks.md": {
           "executable": false,
@@ -264,7 +264,7 @@
         "references/initialize.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "ec966567c148ac34de2d354089cc03ae5b9c9a1974f824a59824d3340f88df8e"
+          "sha256": "284f1ee11267e929f0fe653730aab65f84cb219a5a7519d765f950dc31563955"
         },
         "references/review.md": {
           "executable": false,
@@ -284,23 +284,28 @@
         "references/status.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "99c5164f9060a05b322072ec5d8b5ea050f4570d09a1de40fb04d788a60b83fe"
+          "sha256": "f0603adfa7a6c5e327fba8b98c9f27170fcc8c2225316c7ad727dfffbc08fd5f"
+        },
+        "scripts/ralph": {
+          "executable": true,
+          "kind": "file",
+          "sha256": "d813fe9270e1173e2fd578f7392241d700fb1266c47cf80b27cf3ab926e14ff4"
         },
         "scripts/ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "4647a747f2846a5dc89445d38f9d39bda9e4aadef53d4ef8f23d01add296732f"
+          "sha256": "802bbe1abf2b3315f4f6f31af4500c36616e7b8aa4b900ef01416fae4d413388"
         },
         "scripts/test_ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "be7c8812b7610d7b2b9cdc22d752169690d4501d37b39276ae369684def01a67"
+          "sha256": "d807d4c72eb2e1a93610c834614585fe583b9396f663587b43dcc0885ea61c86"
         }
       },
-      "fingerprint": "5b46d4aca9807f91e52e6f75513b09921fcd19b1ece5ceef477f6d3a6d75c4c1",
-      "source_commit": "f0d711e90c555f8d8ff84585f91539bdbff91a0d",
+      "fingerprint": "bace23cdfac3f5195646a419587c26f55f6f50a1a31b3af26d5f0a5aabcd409c",
+      "source_commit": "f41f68e9a1b53807c2e3e6b0e69969feb5721a24",
       "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.6.1"
+      "version": "0.6.2"
     }
   },
   "schema_version": 1
