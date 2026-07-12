@@ -88,7 +88,7 @@
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "986d95a92d1538ad7a755e6776e7bf62e90e6deb9c26c5aecc40e3a0346daee6"
+          "sha256": "a44c09a63563688578d3d87354e992d7ce974922707d70d563fbf884ac571c5f"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -136,7 +136,7 @@
         "assets/templates/monorepo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "c255665f90ab9a32d724a8f3946093ba516bc3b22e5ce3a871cc8df2aca89c28"
+          "sha256": "02da8063ef9b601c44ff4c4bf740dfc2de5a2431907bbd15425158ba06f9720e"
         },
         "assets/templates/monorepo/prompt.md.template": {
           "executable": false,
@@ -204,7 +204,7 @@
         "assets/templates/multi-repo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "debd7f48243914c6edc0cd9058c8fb0c7307f2a82f2d11f0a4c08952308feb58"
+          "sha256": "ca36464afcc4209d5242eb3939301b1f2fd972072f8718d0bb6c3aa7b2dad310"
         },
         "assets/templates/multi-repo/prompt.md.template": {
           "executable": false,
@@ -309,13 +309,13 @@
         "scripts/test_ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "f812ebcf2bd7a07a6695d411fc1b7dc81cb70e381215e76ebe8a9ad758bbb0c5"
+          "sha256": "270444262bbaad45a4d0db39d78f5d16319668a5ab5380f802538803ccf7612e"
         }
       },
-      "fingerprint": "d04771a96b2a66f36d367d0f72aaed5cc5b7c14f19fe4d1b203a762d052ec55a",
-      "source_commit": "bbfb29f1ca4bea01adef0cc154c8bf7c89b61398",
+      "fingerprint": "253f56ea2e1d946a68b1386e6b394d4a6e4dc0e93752eee6275803ca198ba2bd",
+      "source_commit": "31cb61ca98278f614cb79e099b2aa890fd37ba31",
       "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.6.6"
+      "version": "0.6.7"
     }
   },
   "schema_version": 1
