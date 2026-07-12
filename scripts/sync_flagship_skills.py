@@ -275,6 +275,31 @@ def update_package(skill: str, source_root: Path, apply: bool) -> dict[str, Any]
         return result
 
 
+def remove_package(skill: str, apply: bool) -> dict[str, Any]:
+    """Retire a generated package and its provenance lock explicitly."""
+    lock = load_lock()
+    target = SKILLS_ROOT / skill
+    locked = skill in lock["packages"]
+    present = target.exists() or target.is_symlink()
+    result = {
+        "skill": skill,
+        "applied": apply,
+        "changed": locked or present,
+        "removed_lock": locked,
+        "removed_target": present,
+    }
+    if not apply:
+        return result
+    if target.is_symlink():
+        raise SyncError(f"Refusing symlinked collection target: {target}")
+    if target.exists():
+        shutil.rmtree(target)
+    if locked:
+        del lock["packages"][skill]
+        write_lock(lock)
+    return result
+
+
 def print_result(result: dict[str, Any], as_json: bool) -> None:
     if as_json:
         print(json.dumps(result, indent=2, sort_keys=True))
@@ -286,6 +311,10 @@ def print_result(result: dict[str, Any], as_json: bool) -> None:
             for category, paths in package["differences"].items():
                 for path in paths:
                     print(f"  {category}: {path}")
+        return
+    if "removed_lock" in result:
+        action = "removed" if result["applied"] else "remove preview"
+        print(f"{action}: {result['skill']}")
         return
     action = "applied" if result["applied"] else "preview"
     print(f"{action}: {result['skill']} {result['version']} from {result['source_commit'][:12]}")
@@ -305,6 +334,12 @@ def build_parser() -> argparse.ArgumentParser:
     update.add_argument("--source-root", type=Path, required=True)
     update.add_argument("--apply", action="store_true")
     update.add_argument("--json", action="store_true")
+    remove = subparsers.add_parser(
+        "remove", help="Retire a generated package and delete its lock entry."
+    )
+    remove.add_argument("--skill", required=True)
+    remove.add_argument("--apply", action="store_true")
+    remove.add_argument("--json", action="store_true")
     return parser
 
 
@@ -315,7 +350,10 @@ def main() -> int:
             result = check_all(arguments.skill)
             print_result(result, arguments.json)
             return 0 if result["ok"] else 1
-        result = update_package(arguments.skill, arguments.source_root, arguments.apply)
+        if arguments.command == "remove":
+            result = remove_package(arguments.skill, arguments.apply)
+        else:
+            result = update_package(arguments.skill, arguments.source_root, arguments.apply)
         print_result(result, arguments.json)
         return 0
     except (OSError, SyncError) as error:

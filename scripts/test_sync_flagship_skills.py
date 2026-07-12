@@ -120,6 +120,18 @@ class FlagshipSyncTest(unittest.TestCase):
         sync.update_package("demo-skill", source, True)
         self.assertFalse((sync.SKILLS_ROOT / "demo-skill" / "scripts" / "helper.sh").exists())
 
+    def test_remove_retires_generated_package_and_lock(self) -> None:
+        source = initialize_source(self.root / "source")
+        sync.update_package("demo-skill", source, True)
+        preview = sync.remove_package("demo-skill", False)
+        self.assertTrue(preview["changed"])
+        self.assertTrue((sync.SKILLS_ROOT / "demo-skill").exists())
+        removed = sync.remove_package("demo-skill", True)
+        self.assertTrue(removed["removed_lock"])
+        self.assertTrue(removed["removed_target"])
+        self.assertFalse((sync.SKILLS_ROOT / "demo-skill").exists())
+        self.assertNotIn("demo-skill", sync.load_lock()["packages"])
+
     def test_dirty_and_unpushed_sources_are_rejected(self) -> None:
         source = initialize_source(self.root / "source")
         (source / "SKILL.md").write_text("dirty\n", encoding="utf-8")
