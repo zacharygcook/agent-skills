@@ -124,9 +124,9 @@
       "path": "skills/ralph-loop",
       "classification": "skills",
       "source": "curated",
-      "file_count": 48,
-      "bytes": 266579,
-      "sha256": "e717080ae36573559ed45e26c3ac9ed4e4ad26bfa5ab72ee2471673f5b23d201"
+      "file_count": 49,
+      "bytes": 292229,
+      "sha256": "aade408b7c18e591cc5000a4fcd57064ccb16ccec835a84027335406ef9ef6c5"
     },
     {
       "name": "ralph-review",
@@ -135,7 +135,7 @@
       "source": "curated",
       "file_count": 3,
       "bytes": 1707,
-      "sha256": "bc71ef430a6c1fa8bb89eaffba38db9c037341da0ce6de6f49c28a91bcf057fe"
+      "sha256": "2da63081dcaa87f92d8ef693b1f2dabe088a8c40a14c4a31b2a1ac8cb9b5d627"
     },
     {
       "name": "ralph-sprint",
@@ -144,7 +144,7 @@
       "source": "curated",
       "file_count": 3,
       "bytes": 1815,
-      "sha256": "07f26319a4c474020b8f3f4b47f44fd5b09a65ce8c72654f0ff9ef39190f0b3d"
+      "sha256": "d090c613311e3cc9e3083d6e3f2f0d22d814e2f49481da02d152d1be0068bab8"
     },
     {
       "name": "ralph-status",
@@ -153,7 +153,7 @@
       "source": "curated",
       "file_count": 3,
       "bytes": 1599,
-      "sha256": "e71aee31b1262cd09afdd1eb0255e2df1ebe3a40a5ebcac216d0ae7413ef74cc"
+      "sha256": "2a719e3733696b03c6e1cd967e2cce92c5bf3fd99ae060d55b77cc044ef1628d"
     },
     {
       "name": "repo-cleanup-auditor",
