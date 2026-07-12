@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "skill_count": 20,
+  "skill_count": 23,
   "skills": [
     {
       "name": "agent-readiness-scoring",
@@ -120,13 +120,40 @@
       "sha256": "c6e791172922018cf6fcf0924fe028b8136b251909c181e4cc216d95d681a697"
     },
     {
-      "name": "ralph-workflows",
-      "path": "skills/ralph-workflows",
+      "name": "ralph-loop",
+      "path": "skills/ralph-loop",
       "classification": "skills",
       "source": "curated",
       "file_count": 48,
-      "bytes": 266398,
-      "sha256": "e3c1311628f3ee21acd5d0b0e06bf01ec6fa127f999ce09016a422a716cae3bb"
+      "bytes": 266579,
+      "sha256": "e717080ae36573559ed45e26c3ac9ed4e4ad26bfa5ab72ee2471673f5b23d201"
+    },
+    {
+      "name": "ralph-review",
+      "path": "skills/ralph-review",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 1707,
+      "sha256": "bc71ef430a6c1fa8bb89eaffba38db9c037341da0ce6de6f49c28a91bcf057fe"
+    },
+    {
+      "name": "ralph-sprint",
+      "path": "skills/ralph-sprint",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 1815,
+      "sha256": "07f26319a4c474020b8f3f4b47f44fd5b09a65ce8c72654f0ff9ef39190f0b3d"
+    },
+    {
+      "name": "ralph-status",
+      "path": "skills/ralph-status",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 1599,
+      "sha256": "e71aee31b1262cd09afdd1eb0255e2df1ebe3a40a5ebcac216d0ae7413ef74cc"
     },
     {
       "name": "repo-cleanup-auditor",
@@ -143,8 +170,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 64565,
-      "sha256": "e6d5a142f63acf6f4cdb29164072335602512fe059b25c5582ba499b760ccbd9"
+      "bytes": 65495,
+      "sha256": "ac12b55720c3b2ab224c4f46a7d6ecd9094867803c13763cc9bf4c5a2f1b2c5e"
     },
     {
       "name": "staged-script-rollout",

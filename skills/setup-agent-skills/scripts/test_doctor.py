@@ -48,13 +48,17 @@ class DoctorTest(unittest.TestCase):
             "agents": [],
         }
 
-    def test_catalog_defines_seven_packs_and_all_twenty_skills(self) -> None:
+    def test_catalog_defines_seven_packs_and_all_twenty_three_skills(self) -> None:
         self.assertEqual(len(self.catalog["packs"]), 7)
-        self.assertEqual(len(self.catalog["skills"]), 20)
+        self.assertEqual(len(self.catalog["skills"]), 23)
         self.assertIn("setup-agent-skills", self.catalog["skills"])
         self.assertIn("agent-readiness-scoring", self.catalog["skills"])
         self.assertIn("write-public-readme", self.catalog["skills"])
         self.assertIn("design-human-first-cli", self.catalog["skills"])
+        self.assertIn("ralph-loop", self.catalog["skills"])
+        self.assertIn("ralph-sprint", self.catalog["skills"])
+        self.assertIn("ralph-status", self.catalog["skills"])
+        self.assertIn("ralph-review", self.catalog["skills"])
 
     def test_fingerprint_detects_web_postgres_queue_and_review_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

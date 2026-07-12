@@ -4,7 +4,7 @@
 [![Install with skills.sh](https://img.shields.io/badge/install-skills.sh-ff2b88?logo=npm&logoColor=white)](#install-in-30-seconds)
 [![License: MIT](https://img.shields.io/badge/License-MIT-111111.svg)](LICENSE)
 
-Seventeen practical engineering workflows plus one onboarding concierge for coding agents: make a
+Twenty-two practical engineering workflows plus one onboarding concierge for coding agents: make a
 repository agent-ready, run trustworthy E2E tests, operate long autonomous loops, review code,
 improve test coverage, diagnose Postgres queues, and ship risky scripts without losing control.
 
@@ -59,7 +59,7 @@ npx skills@latest add zacharygcook/agent-skills --skill agent-readiness-scoring
 
 To make installed skills available globally instead of only in the current project, add `--global`.
 
-Want a tailored recommendation instead of browsing all 18 packages? Install only the concierge:
+Want a tailored recommendation instead of browsing all 23 packages? Install only the concierge:
 
 ```bash
 npx skills@latest add zacharygcook/agent-skills --skill setup-agent-skills
@@ -107,9 +107,15 @@ same evidence.
   skills.
 - [`agent-readiness-scoring`](skills/agent-readiness-scoring) — Audit and iteratively improve how
   safely and effectively coding agents can work in a repository.
-- [`ralph-workflows`](skills/ralph-workflows) — Install and operate a hardened resumable runtime with
-  sequential chunks, persistent scratchpad memory, heartbeat/event logs, manifests, status tooling,
-  and idempotent post-sprint hooks.
+- [`ralph-loop`](skills/ralph-loop) — Initialize and operate a hardened resumable runtime with
+  sequential chunks, persistent scratchpad memory, heartbeat/event logs, manifests, and idempotent
+  post-sprint hooks.
+- [`ralph-sprint`](skills/ralph-sprint) — Turn a spec into exactly the next dependency-ordered,
+  reviewable sprint without accidentally starting unattended execution.
+- [`ralph-status`](skills/ralph-status) — Report truthful progress from chunk state, manifests, hooks,
+  commits, markers, and logs without mutating the loop.
+- [`ralph-review`](skills/ralph-review) — Assess a sprint against its spec, implementation,
+  validation evidence, and orchestration state before accepting it.
 - [`repo-cleanup-auditor`](skills/repo-cleanup-auditor) — Scan an entire repository for evidence-backed
   deletion, move, and rename candidates, then wait for approval before changing anything.
 - [`staged-script-rollout`](skills/staged-script-rollout) — Take a live-writing script through dry run,
@@ -162,7 +168,10 @@ agent-readiness-scoring
 ```
 
 ```text
-ralph-workflows
+ralph-loop
+  → ralph-sprint
+  → ralph-status
+  → ralph-review
   → good-test-bad-test
   → handle-automated-code-review
   → staged-script-rollout
@@ -207,21 +216,22 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_sync_flagship_skills.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_agent_eval.py -v
 PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
-PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-workflows/scripts/test_ralph.py -v
+PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-loop/scripts/test_ralph.py -v
 gitleaks dir --redact=100 --no-banner .
 ```
 
 ## Canonical flagship packages
 
-`agent-readiness-scoring` and `ralph-workflows` are authored in dedicated canonical repositories and
-exported deterministically into this collection. Their locked source commit, version, exact file
-state, executable bits, symlinks, and package fingerprint live in `flagship-skills.lock.json`.
+`agent-readiness-scoring` and the four Ralph skills are authored in dedicated canonical repositories
+and exported deterministically into this collection. Their locked source commit, version, exact
+file state, executable bits, symlinks, and package fingerprint live in
+`flagship-skills.lock.json`.
 
 Preview and apply a canonical release with:
 
 ```bash
-python3 scripts/sync_flagship_skills.py update --skill ralph-workflows --source-root ../zach-ralph-method
-python3 scripts/sync_flagship_skills.py update --skill ralph-workflows --source-root ../zach-ralph-method --apply
+python3 scripts/sync_flagship_skills.py update --skill ralph-loop --source-root ../zach-ralph-method/skills/ralph-loop
+python3 scripts/sync_flagship_skills.py update --skill ralph-loop --source-root ../zach-ralph-method/skills/ralph-loop --apply
 ```
 
 Collection CI rejects direct edits or drift. Canonical repositories automatically propose update

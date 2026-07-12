@@ -18,7 +18,10 @@
       "description": "Run resumable implementation loops grounded in useful tests and review.",
       "skills": [
         "setup-agent-skills",
-        "ralph-workflows",
+        "ralph-loop",
+        "ralph-sprint",
+        "ralph-status",
+        "ralph-review",
         "good-test-bad-test",
         "expand-test-coverage",
         "handle-automated-code-review",
@@ -228,9 +231,9 @@
         }
       ]
     },
-    "ralph-workflows": {
+    "ralph-loop": {
       "priority": 31,
-      "summary": "Install and operate a hardened resumable autonomous sprint runtime.",
+      "summary": "Initialize and operate a hardened resumable autonomous sprint runtime.",
       "signals": ["ralph"],
       "prerequisites": [
         {
@@ -253,8 +256,26 @@
         }
       ]
     },
-    "staged-script-rollout": {
+    "ralph-sprint": {
       "priority": 32,
+      "summary": "Create and validate exactly the next dependency-ordered Ralph sprint.",
+      "signals": ["ralph"],
+      "prerequisites": []
+    },
+    "ralph-status": {
+      "priority": 33,
+      "summary": "Report truthful Ralph progress from chunks, manifests, hooks, commits, and logs.",
+      "signals": ["ralph"],
+      "prerequisites": []
+    },
+    "ralph-review": {
+      "priority": 34,
+      "summary": "Review a Ralph sprint against its spec, implementation, validation, and hook evidence.",
+      "signals": ["ralph"],
+      "prerequisites": []
+    },
+    "staged-script-rollout": {
+      "priority": 35,
       "summary": "Ramp live-writing scripts through dry run, limited execution, audit, and rollback.",
       "signals": ["live_scripts"],
       "prerequisites": []

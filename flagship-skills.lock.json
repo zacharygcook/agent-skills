@@ -73,22 +73,22 @@
       "source_repository": "https://github.com/zacharygcook/agent-readiness-scoring",
       "version": "0.3.0"
     },
-    "ralph-workflows": {
+    "ralph-loop": {
       "files": {
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "9f630fc83cdba9682511afeef1ef971e4ed3d438e1600f74a3ee4b7d4acbe9a1"
+          "sha256": "007b8184bfb31fcc3ced1fa46852e32df898d5454767a6502e0a59f2d82861c3"
         },
         "agents/openai.yaml": {
           "executable": false,
           "kind": "file",
-          "sha256": "7fd3dcd268e87e34704468495758d7183d20b1e154fc9d3e6a94c6384c4e224d"
+          "sha256": "a1f36eaf13376ceb376455f18d190a6b4fe691162be639a506e712272ae7a543"
         },
         "assets/VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "a44c09a63563688578d3d87354e992d7ce974922707d70d563fbf884ac571c5f"
+          "sha256": "d0176718bd214ce8474c06ed61c395ca113fdfc2acdd86d9aa9933b40d9b561e"
         },
         "assets/templates/GOAL.md.template": {
           "executable": false,
@@ -106,12 +106,14 @@
           "sha256": "3373bf4da2698add4132ac065bb46fddc10b6d76123e39107b5174e94dfeb150"
         },
         "assets/templates/monorepo/format-codex-stream.py": {
-          "kind": "symlink",
-          "target": "../shared/format-codex-stream.py"
+          "executable": true,
+          "kind": "file",
+          "sha256": "972a610b4c15206cd5d7510fdbecea21f132edca4d08002ded69218567190964"
         },
         "assets/templates/monorepo/format-stream.py": {
-          "kind": "symlink",
-          "target": "../shared/format-stream.py"
+          "executable": true,
+          "kind": "file",
+          "sha256": "fce8466b6143fb7909976234d7d1aa7ad719991fa432d47109cb726a5b2d1b88"
         },
         "assets/templates/monorepo/hooks/document.sh.template": {
           "executable": true,
@@ -136,7 +138,7 @@
         "assets/templates/monorepo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "02da8063ef9b601c44ff4c4bf740dfc2de5a2431907bbd15425158ba06f9720e"
+          "sha256": "f106332a18778cbfb9438e8bbc37fc486931329bde0fe6bca09858c1e548fa16"
         },
         "assets/templates/monorepo/prompt.md.template": {
           "executable": false,
@@ -174,12 +176,14 @@
           "sha256": "203af6bb47238cc8c24628caf4f40dcf4f2b3354db338ed30cbc2a2f17e0f890"
         },
         "assets/templates/multi-repo/format-codex-stream.py": {
-          "kind": "symlink",
-          "target": "../shared/format-codex-stream.py"
+          "executable": true,
+          "kind": "file",
+          "sha256": "972a610b4c15206cd5d7510fdbecea21f132edca4d08002ded69218567190964"
         },
         "assets/templates/multi-repo/format-stream.py": {
-          "kind": "symlink",
-          "target": "../shared/format-stream.py"
+          "executable": true,
+          "kind": "file",
+          "sha256": "fce8466b6143fb7909976234d7d1aa7ad719991fa432d47109cb726a5b2d1b88"
         },
         "assets/templates/multi-repo/hooks/document.sh.template": {
           "executable": true,
@@ -204,7 +208,7 @@
         "assets/templates/multi-repo/loop.sh.template": {
           "executable": true,
           "kind": "file",
-          "sha256": "ca36464afcc4209d5242eb3939301b1f2fd972072f8718d0bb6c3aa7b2dad310"
+          "sha256": "7d047e880d8683a9aa9155fb7ffc37f71abcb52fda7c5f4444de2db414b7611f"
         },
         "assets/templates/multi-repo/prompt.md.template": {
           "executable": false,
@@ -254,12 +258,12 @@
         "justfile": {
           "executable": false,
           "kind": "file",
-          "sha256": "ac336eb3ee9c0434901577878cbb47903173f2e1eb35634cc8891ab8825b81ab"
+          "sha256": "efe2e0ad8417b520ff6114a9ce8db13f30720b672608f5b544173e0ee8e89614"
         },
         "recipes.just": {
           "executable": false,
           "kind": "file",
-          "sha256": "b677a7ec5e0ab7ec2f9a00d6b569d04fb008e2f6530a69cd96aa9a47f51bdbaf"
+          "sha256": "1a02ca551edac8dcc63dd18489448c1f1f00fcdfe242c2ced1e4f46ebda8a402"
         },
         "references/chunks.md": {
           "executable": false,
@@ -274,7 +278,7 @@
         "references/initialize.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "d51223078755c9c8180f65c0613b380526f1403e295091d077a0ef3a5147e9cf"
+          "sha256": "20ecb8e995e75f12f1d6a0f6c9bc942025129edc6730e2e8efe3e2e6feb58a60"
         },
         "references/review.md": {
           "executable": false,
@@ -304,18 +308,87 @@
         "scripts/ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "4aa1e2fd7556397e615ea6dfcaf1a7ab9f511d4d9cb4014532ade5e8e88fb66d"
+          "sha256": "b7cdaff885266c8ef03fe4afc721a5379fddc4a3cd5405070ef22672e3eb6d3a"
         },
         "scripts/test_ralph.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "270444262bbaad45a4d0db39d78f5d16319668a5ab5380f802538803ccf7612e"
+          "sha256": "85af8cf92a7aaf72a891d45297555176cc9cfc842ea1c51c534fef4d14f31d6e"
         }
       },
-      "fingerprint": "253f56ea2e1d946a68b1386e6b394d4a6e4dc0e93752eee6275803ca198ba2bd",
-      "source_commit": "31cb61ca98278f614cb79e099b2aa890fd37ba31",
-      "source_repository": "https://github.com/zacharygcook/zach-ralph-method",
-      "version": "0.6.7"
+      "fingerprint": "c1cfcb8b2a1cfd34ae591fe5c90c1111fff4f342f35e97d9801c3940b8f6ef2c",
+      "source_commit": "b3c4aa22049dd4d45db6b9fb1832118c543549e8",
+      "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
+      "version": "0.7.2"
+    },
+    "ralph-review": {
+      "files": {
+        "SKILL.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "98ae2e55f20df0dddd61e7c7bea867ef1fb15d7086f5300dd96ba21d0a37f7ad"
+        },
+        "agents/openai.yaml": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "a67c0d68f58019bd26a7fa0ffe8a1bca9e88103fada4710675588238a33f84c1"
+        },
+        "assets/VERSION": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "d0176718bd214ce8474c06ed61c395ca113fdfc2acdd86d9aa9933b40d9b561e"
+        }
+      },
+      "fingerprint": "ed13ccef50b4916e81e31c3517528159bbbbcae061eb3bd1e1c793ee557df4a6",
+      "source_commit": "b3c4aa22049dd4d45db6b9fb1832118c543549e8",
+      "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
+      "version": "0.7.2"
+    },
+    "ralph-sprint": {
+      "files": {
+        "SKILL.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "0fdaa138eebc91854b71784a44f16e7b7c1b2ca2d283dba96f9f6ac6a6a26144"
+        },
+        "agents/openai.yaml": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "f1cd82cdb8a471673862b27e5ebbe9d3e119eae696fa4e0230a344a17d52201f"
+        },
+        "assets/VERSION": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "d0176718bd214ce8474c06ed61c395ca113fdfc2acdd86d9aa9933b40d9b561e"
+        }
+      },
+      "fingerprint": "32d7252d528e5bdcf42630062dfc31fc15c349ad08671a5dc4b7ddd1370a2dfa",
+      "source_commit": "b3c4aa22049dd4d45db6b9fb1832118c543549e8",
+      "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
+      "version": "0.7.2"
+    },
+    "ralph-status": {
+      "files": {
+        "SKILL.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "39f38c4273f5dcbe0dd2a4ebd77b968eaadb6775a130f963f8efc05411550143"
+        },
+        "agents/openai.yaml": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "88d1a0e640675c55b897322179b9db4b2c7870794404756fd69c0e6976ec31c2"
+        },
+        "assets/VERSION": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "d0176718bd214ce8474c06ed61c395ca113fdfc2acdd86d9aa9933b40d9b561e"
+        }
+      },
+      "fingerprint": "ac295f67339949f5567c0e0980f9beb1f7098487f0948958e4549e39e8337b7e",
+      "source_commit": "b3c4aa22049dd4d45db6b9fb1832118c543549e8",
+      "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
+      "version": "0.7.2"
     }
   },
   "schema_version": 1

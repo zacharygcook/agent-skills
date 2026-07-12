@@ -36,7 +36,7 @@ jobs:
       - name: Test onboarding doctor
         run: PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
       - name: Test hardened Ralph runtime
-        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-workflows/scripts/test_ralph.py -v
+        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/ralph-loop/scripts/test_ralph.py -v
       - name: Scan for secrets
         uses: gitleaks/gitleaks-action@v2
         env:

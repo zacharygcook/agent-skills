@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository contains 18 generally useful skills: 17 engineering workflows selected from personal reusable packages and project-derived work, plus a repository-aware onboarding concierge. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
+This repository contains 23 generally useful skills: 22 engineering workflows selected from personal reusable packages and project-derived work, plus a repository-aware onboarding concierge. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
 
 The source search covered personal agent discovery directories, selected software repositories, duplicate worktrees, and two personal workstations. Exact duplicates and stale variants were collapsed.
 
@@ -17,8 +17,9 @@ The source search covered personal agent discovery directories, selected softwar
 
 ## Consolidations
 
-- Six Ralph packages plus an authored production-tested shell orchestrator became `ralph-workflows`,
-  with operation-specific references and a project-neutral runtime.
+- Six early Ralph packages plus a production-tested shell orchestrator became one project-neutral
+  runtime exposed through the focused `ralph-loop`, `ralph-sprint`, `ralph-status`, and
+  `ralph-review` entry points.
 - Two Mermaid packages became `mermaid-diagrams`.
 - Two local dashboard/browser suites became `local-web-e2e`.
 - Two stale-PR rubrics became `triage-stale-pull-requests`.
@@ -38,10 +39,11 @@ scope, and agent approval before project or global installation.
 standalone-repository maintenance files. Its distributable scoring, reporting, comparison, package
 doctor/vendor, and behavioral-evaluation tools remain intact.
 
-`ralph-workflows` is synchronized from the standalone `zach-ralph-method` canonical package. Project
-framework assumptions, paths, and hook commands were removed; heartbeat monitoring, stale-state
-recovery, event logs, resumability, evidence-gated completion, and idempotent hooks are released here
-under the collection's MIT license.
+The four Ralph skills are synchronized from the standalone `zach-ralph-method` canonical package.
+`ralph-loop` owns the project-neutral runtime; the focused sprint, status, and review skills expose
+clear operation-specific boundaries. Heartbeat monitoring, stale-state recovery, event logs,
+resumability, evidence-gated completion, and idempotent hooks are released here under the
+collection's MIT license.
 
 `repo-cleanup-auditor` originated from a personal workflow design specifying six candidate categories and approval before mutation. Generator-added company/license metadata was removed; the collection is released under the repository-level MIT License.
 
