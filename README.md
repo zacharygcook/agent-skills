@@ -18,7 +18,7 @@ npx skills add zacharygcook/agent-skills
 Or install one workflow:
 
 ```bash
-npx skills add zacharygcook/agent-skills@agent-readiness-scoring
+npx skills add zacharygcook/agent-skills@agent-readiness
 ```
 
 Add `-g` to install globally.
@@ -38,7 +38,7 @@ preferences, such as “for this repo” or “for Codex.”
 ### Audit this repository
 
 ```text
-$agent-readiness-scoring audit this repo and suggest improvements
+$agent-readiness audit this repo and suggest improvements
 ```
 
 It produces a read-only, evidence-backed assessment and the highest-value next improvements.
@@ -46,7 +46,7 @@ It produces a read-only, evidence-backed assessment and the highest-value next i
 ### Set readiness preferences
 
 ```text
-$agent-readiness-scoring walk me through setting up my preferences
+$agent-readiness walk me through setting up my preferences
 ```
 
 It helps tailor repository preferences without overwriting an existing file.
@@ -57,7 +57,7 @@ It helps tailor repository preferences without overwriting an existing file.
 
 - [`setup-agent-skills`](skills/setup-agent-skills) — Inspect the machine and repository, then
   recommend and install a focused set of skills with approval.
-- [`agent-readiness-scoring`](skills/agent-readiness-scoring) — Audit and improve how safely and
+- [`agent-readiness`](skills/agent-readiness) — Audit and improve how safely and
   effectively coding agents can work in a repository.
 - [`ralph-loop`](skills/ralph-loop) — Run hardened, resumable autonomous implementation loops.
 - [`ralph-sprint`](skills/ralph-sprint) — Turn a specification into the next reviewable sprint.
@@ -113,7 +113,7 @@ ralph-loop → ralph-sprint → ralph-status → ralph-review
 
 ## The readiness loop
 
-`agent-readiness-scoring` audits a repository with concrete evidence, chooses one high-value gap,
+`agent-readiness` audits a repository with concrete evidence, chooses one high-value gap,
 builds a durable capability, then validates and rescores the result.
 
 <picture>

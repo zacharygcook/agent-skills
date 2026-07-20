@@ -1,0 +1,7 @@
+flowchart LR
+    audit["AUDIT &amp; PROVE<br/><b>Evidence</b>"] --> gaps["CHOOSE<br/><b>One gap</b>"]
+    gaps --> improve["IMPROVE<br/><b>Authorized change</b>"]
+    improve --> verify["VERIFY<br/><b>Validate · rescore</b>"]
+    verify --> target{"Target<br/>met?"}
+    target -- "Not yet" --> gaps
+    target -- "Yes" --> ready["READY<br/><b>Safer agent work</b>"]

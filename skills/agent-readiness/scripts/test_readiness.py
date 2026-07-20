@@ -131,11 +131,11 @@ class ReadinessScoringTest(unittest.TestCase):
 
     def test_skill_package_has_required_metadata_and_resources(self) -> None:
         skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
-        self.assertTrue(skill.startswith("---\nname: agent-readiness-scoring\n"))
+        self.assertTrue(skill.startswith("---\nname: agent-readiness\n"))
         self.assertIn("description:", skill.split("---", 2)[1])
         self.assertTrue(readiness.DEFAULT_RUBRIC.is_file())
         self.assertTrue(readiness.PREFERENCES_TEMPLATE.is_file())
-        self.assertEqual(readiness.package_version(), "0.3.0")
+        self.assertEqual(readiness.package_version(), "0.4.0")
         self.assertEqual(len(readiness.package_fingerprint()), 64)
         self.assertEqual(
             readiness.PREFERENCES_TEMPLATE.name,
@@ -197,6 +197,60 @@ class ReadinessScoringTest(unittest.TestCase):
         payload = readiness.report_payload(assessment, self.rubric, scores)
         self.assertIn("**Owned readiness:** Level 5, **100.00%**", report)
         self.assertEqual(payload["summary"]["owned_percentage"], 100)
+
+    def test_owned_build_deploy_extension_is_separate_from_82_criterion_scores(self) -> None:
+        assessment = self.assessment()
+        assessment["owned_extensions"] = {
+            "build_deploy_performance_hygiene": {
+                "version": "1.0",
+                "controls": {
+                    control_id: judgment()
+                    for control_id in readiness.OWNED_EXTENSION_DEFINITIONS[
+                        "build_deploy_performance_hygiene"
+                    ]["controls"]
+                },
+            }
+        }
+
+        scores = readiness.score_assessment(assessment, self.rubric)
+        report = readiness.render_markdown(assessment, self.rubric, scores)
+        payload = readiness.report_payload(assessment, self.rubric, scores)
+
+        self.assertEqual(readiness.overall_percentage(scores, "owned_ratio"), 100)
+        self.assertEqual(payload["owned_extensions"]["checkpoint_denominator"], 1)
+        self.assertEqual(payload["owned_extensions"]["control_denominator"], 5)
+        self.assertEqual(payload["owned_extensions"]["controls_passing"], 5)
+        self.assertIn("do not change the stable 82-criterion", report)
+        self.assertIn("control denominator: 5", report)
+        self.assertIn("01a / Owned extensions", readiness.render_html(payload))
+
+    def test_owned_build_deploy_extension_requires_every_evidence_backed_control(self) -> None:
+        assessment = self.assessment()
+        assessment["owned_extensions"] = {
+            "build_deploy_performance_hygiene": {
+                "version": "1.0",
+                "controls": {"phase_timing": judgment()},
+            }
+        }
+
+        with self.assertRaisesRegex(readiness.AssessmentError, "missing controls"):
+            readiness.validate_assessment(assessment, self.rubric)
+
+    def test_owned_build_deploy_extension_rejects_a_prose_only_control(self) -> None:
+        assessment = self.assessment()
+        controls = {
+            control_id: judgment()
+            for control_id in readiness.OWNED_EXTENSION_DEFINITIONS[
+                "build_deploy_performance_hygiene"
+            ]["controls"]
+        }
+        controls["phase_timing"]["evidence"] = []
+        assessment["owned_extensions"] = {
+            "build_deploy_performance_hygiene": {"version": "1.0", "controls": controls}
+        }
+
+        with self.assertRaisesRegex(readiness.AssessmentError, "at least one evidence item"):
+            readiness.validate_assessment(assessment, self.rubric)
 
     def test_owned_score_excludes_inapplicable_app_but_compatibility_does_not(self) -> None:
         assessment = self.assessment()
@@ -334,7 +388,7 @@ class ReadinessScoringTest(unittest.TestCase):
             self.assertEqual(set(assessment["repository"]["applications"]), {"backend", "frontend"})
             self.assertFalse(assessment["repository"]["dirty"])
             self.assertEqual(assessment["preferences"]["checksum"], readiness.sha256_file(repository / "AGENT_READINESS_PREFERENCES.md"))
-            self.assertEqual(assessment["provenance"]["skill_version"], "0.3.0")
+            self.assertEqual(assessment["provenance"]["skill_version"], "0.4.0")
             self.assertEqual(assessment["provenance"]["applications"], ["backend", "frontend"])
             self.assertEqual(assessment["provenance"]["evidence_checks"], [])
             self.assertEqual(assessment["recommendations"], [])
@@ -595,7 +649,7 @@ class ReadinessScoringTest(unittest.TestCase):
 
     def test_vendor_is_dry_run_by_default_and_apply_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            target = Path(directory) / ".agents" / "skills" / "agent-readiness-scoring"
+            target = Path(directory) / ".agents" / "skills" / "agent-readiness"
             dry_run = run_cli("vendor", "--target", str(target), "--json")
             self.assertEqual(dry_run.returncode, 0, dry_run.stderr)
             self.assertFalse(target.exists())

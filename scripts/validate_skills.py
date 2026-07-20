@@ -112,7 +112,7 @@ def main() -> int:
     for paths in duplicates:
         warnings.append("duplicate skill trees: " + ", ".join(map(str, paths)))
 
-    rubric = ROOT / "skills" / "agent-readiness-scoring" / "references" / "rubric.json"
+    rubric = ROOT / "skills" / "agent-readiness" / "references" / "rubric.json"
     if rubric.exists():
         rubric_data = json.loads(rubric.read_text(encoding="utf-8"))
         ids = [criterion["id"] for criterion in rubric_data.get("criteria", [])]

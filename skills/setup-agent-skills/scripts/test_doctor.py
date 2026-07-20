@@ -52,7 +52,7 @@ class DoctorTest(unittest.TestCase):
         self.assertEqual(len(self.catalog["packs"]), 7)
         self.assertEqual(len(self.catalog["skills"]), 23)
         self.assertIn("setup-agent-skills", self.catalog["skills"])
-        self.assertIn("agent-readiness-scoring", self.catalog["skills"])
+        self.assertIn("agent-readiness", self.catalog["skills"])
         self.assertIn("write-public-readme", self.catalog["skills"])
         self.assertIn("design-human-first-cli", self.catalog["skills"])
         self.assertIn("ralph-loop", self.catalog["skills"])
@@ -153,11 +153,11 @@ class DoctorTest(unittest.TestCase):
             root = Path(directory)
             repo = root / "repo"
             home = root / "home"
-            (repo / ".agents/skills/agent-readiness-scoring").mkdir(parents=True)
+            (repo / ".agents/skills/agent-readiness").mkdir(parents=True)
             (home / ".agents/skills/repo-cleanup-auditor").mkdir(parents=True)
             installed = doctor.installed_skills(self.catalog, repo, home, {})
-            self.assertIn("agent-readiness-scoring", installed["project"])
-            self.assertNotIn("agent-readiness-scoring", installed["global"])
+            self.assertIn("agent-readiness", installed["project"])
+            self.assertNotIn("agent-readiness", installed["global"])
             self.assertIn("repo-cleanup-auditor", installed["global"])
             self.assertNotIn("repo-cleanup-auditor", installed["project"])
 
@@ -166,7 +166,7 @@ class DoctorTest(unittest.TestCase):
     ) -> None:
         machine = self.empty_machine()
         home = Path(machine["home"])
-        readiness = self.catalog["skills"]["agent-readiness-scoring"]
+        readiness = self.catalog["skills"]["agent-readiness"]
         mermaid = self.catalog["skills"]["mermaid-diagrams"]
         perplexity = self.catalog["skills"]["perplexity-research"]
         self.assertEqual(
@@ -206,7 +206,7 @@ class DoctorTest(unittest.TestCase):
         self.assertTrue(
             {
                 "setup-agent-skills",
-                "agent-readiness-scoring",
+                "agent-readiness",
                 "repo-cleanup-auditor",
             }.issubset(names)
         )
@@ -225,7 +225,7 @@ class DoctorTest(unittest.TestCase):
             home = root / "home"
             repo.mkdir()
             (repo / ".git").mkdir()
-            (home / ".agents/skills/agent-readiness-scoring").mkdir(parents=True)
+            (home / ".agents/skills/agent-readiness").mkdir(parents=True)
             bin_dir = root / "bin"
             self.make_executable(bin_dir, "python3")
             self.make_executable(bin_dir, "npx")
@@ -240,9 +240,9 @@ class DoctorTest(unittest.TestCase):
                 {"PATH": str(bin_dir)},
                 str(bin_dir),
             )
-            self.assertIn("agent-readiness-scoring", report["install_plan"]["skills"])
+            self.assertIn("agent-readiness", report["install_plan"]["skills"])
             self.assertIn(
-                "agent-readiness-scoring", report["installed_skills"]["global"]
+                "agent-readiness", report["installed_skills"]["global"]
             )
 
     def test_install_argv_is_explicit_copy_mode_and_scope_aware(self) -> None:
@@ -272,7 +272,7 @@ class DoctorTest(unittest.TestCase):
                 repo,
                 self.catalog,
                 [],
-                ["agent-readiness-scoring"],
+                ["agent-readiness"],
                 ["codex"],
                 False,
                 home,
@@ -280,7 +280,7 @@ class DoctorTest(unittest.TestCase):
                 str(bin_dir),
             )
             self.assertEqual(
-                report["install_plan"]["skills"], ["agent-readiness-scoring"]
+                report["install_plan"]["skills"], ["agent-readiness"]
             )
             self.assertIn("--agent codex -y", report["install_plan"]["command"])
 

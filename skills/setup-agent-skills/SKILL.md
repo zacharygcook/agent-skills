@@ -33,7 +33,7 @@ not change the machine or repository unless `--install --yes` and an explicit ag
 6. After approval, either run the printed `npx skills@latest add ...` command or rerun the doctor with
    `--install --yes`. The doctor delegates actual placement and lockfile behavior to the Skills CLI.
 7. Rerun the doctor, verify the installed set, and offer one immediate first win—normally a read-only
-   `$agent-readiness-scoring` audit.
+   `$agent-readiness` audit.
 
 ## Interpret prerequisite states
 

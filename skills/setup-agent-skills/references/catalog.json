@@ -7,7 +7,7 @@
       "description": "Audit the repository, remove ambiguity, and build evidence-backed engineering feedback loops.",
       "skills": [
         "setup-agent-skills",
-        "agent-readiness-scoring",
+        "agent-readiness",
         "repo-cleanup-auditor",
         "code-review",
         "expand-test-coverage"
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "agent-readiness-scoring": {
+    "agent-readiness": {
       "priority": 1,
       "summary": "Audit and iteratively improve repository readiness with a transparent 82-criterion rubric.",
       "signals": ["always"],

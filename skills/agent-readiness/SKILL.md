@@ -1,9 +1,9 @@
 ---
-name: agent-readiness-scoring
+name: agent-readiness
 description: Audit, score, compare, report, and iteratively improve how safely and effectively coding agents can work in a software repository. Use for read-only agent-readiness audits, first-class HTML/PDF readiness reports, readiness levels or percentages, Factory-compatible comparisons, AGENT_READINESS_PREFERENCES.md setup, selecting remediations, or autonomous one-criterion-at-a-time improvement loops.
 ---
 
-# Agent Readiness Scoring
+# Agent Readiness
 
 Produce a personally owned, vendor-neutral readiness assessment from a transparent 82-criterion
 rubric. Prefer real engineering capability over score theater and make every judgment auditable.
@@ -59,12 +59,14 @@ accept costs, install external apps, add secrets, or mutate production.
     HTML, Markdown, and JSON reports.
 
 If subagents are available and the task benefits from independence, give a fresh auditor only the
-repository path and: `Use $agent-readiness-scoring at <skill-dir> to perform a read-only audit.` Do
+repository path and: `Use $agent-readiness at <skill-dir> to perform a read-only audit.` Do
 not leak expected scores. The primary agent must still validate the resulting assessment.
 
 ## Scoring integrity
 
 - Keep the compatibility rubric stable; version intentional rubric changes.
+- Owned extensions are versioned, evidence-backed checkpoints outside the 82-criterion rubric.
+  Report their denominators separately and never blend them into compatibility scoring.
 - Weight every non-skipped criterion equally. For app-scoped criteria, the criterion score is the
   fraction of applicable apps passing, not a raw point total.
 - Level bands match the compatibility baseline: Level 1 `<20%`, Level 2 `20–<40%`, Level 3
@@ -79,7 +81,7 @@ not leak expected scores. The primary agent must still validate the resulting as
 
 ## Deterministic tools
 
-- `readiness.py init`: create an unscored 82-criterion assessment skeleton.
+- `readiness.py init`: create an unscored 82-criterion assessment skeleton with an empty owned-extension map.
 - `readiness.py validate`: validate IDs, scopes, statuses, evidence, and application coverage.
 - `readiness.py score`: validate and generate HTML, Markdown, and JSON readiness reports.
   Add `--pdf` for a Chromium-derived PDF and `--previous` to embed progress from the prior round.

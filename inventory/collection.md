@@ -35,7 +35,7 @@ scope, and agent approval before project or global installation.
 
 ## Notable Provenance
 
-`agent-readiness-scoring` is synchronized from its standalone canonical package while excluding
+`agent-readiness` is synchronized from its standalone canonical package while excluding
 standalone-repository maintenance files. Its distributable scoring, reporting, comparison, package
 doctor/vendor, and behavioral-evaluation tools remain intact.
 

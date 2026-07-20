@@ -3,13 +3,13 @@
   "skill_count": 23,
   "skills": [
     {
-      "name": "agent-readiness-scoring",
-      "path": "skills/agent-readiness-scoring",
+      "name": "agent-readiness",
+      "path": "skills/agent-readiness",
       "classification": "skills",
       "source": "curated",
-      "file_count": 13,
-      "bytes": 184468,
-      "sha256": "815237f7f347eb234d47780aedff1d9422d0361c0e240a7b4ab6a8ba3497b6da"
+      "file_count": 18,
+      "bytes": 234446,
+      "sha256": "9c36a732170e5333930b9df7fb7cc50d6035e1f99c0343307ece9bd83428e261"
     },
     {
       "name": "ban-type-assertions",
@@ -170,8 +170,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 65495,
-      "sha256": "ac12b55720c3b2ab224c4f46a7d6ecd9094867803c13763cc9bf4c5a2f1b2c5e"
+      "bytes": 65375,
+      "sha256": "7a2c8951e49e8835b74247fbb4fbf163039106c0828d2ebb7d59533426b43dd9"
     },
     {
       "name": "staged-script-rollout",

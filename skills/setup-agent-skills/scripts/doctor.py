@@ -924,7 +924,7 @@ def render_text(report: Mapping[str, Any], catalog: Mapping[str, Any]) -> str:
             "  1. Review the recommendation evidence and prerequisite fallbacks.",
             "  2. Confirm the exact skills, project/global scope, and target agents.",
             "  3. Run the printed command or rerun with --install --yes after approval.",
-            "  4. Start with a read-only $agent-readiness-scoring audit.",
+            "  4. Start with a read-only $agent-readiness audit.",
         ]
     )
     return "\n".join(lines) + "\n"
