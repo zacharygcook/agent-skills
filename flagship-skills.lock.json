@@ -5,12 +5,12 @@
         "SKILL.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "c15176054f244906d3595d356e367c02f16bbbb1b31513c3595e0344dd912ff4"
+          "sha256": "d73a72ab1e667a3b14ab9efab42c83379878f124eb339a222c7ae05e247f10ed"
         },
         "VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0"
+          "sha256": "40b8eb4000a913a7791090535f291d3d369874162a89ef3c9e3d4e887a1b9e79"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -30,7 +30,7 @@
         "references/assessment-format.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "905c5a0d43c718f293f7e58fd5b59b2a008abd0263981f1b7ffbbe764c23a303"
+          "sha256": "ecdbf76d5e40692eedb7a7986863449647d724b76e0a4354ba34b990bb17b73c"
         },
         "references/remediation-loop.md": {
           "executable": false,
@@ -40,7 +40,7 @@
         "references/report-workflow.md": {
           "executable": false,
           "kind": "file",
-          "sha256": "2dd8960240982ee8ee84fa8130794066dc6caa23bd16f4e849e64c20e5d45f9d"
+          "sha256": "2524247b8f6d77dc50b626a189d6ad98ac55cd2a76e96680ecb373c4e26de29f"
         },
         "references/rubric.json": {
           "executable": false,
@@ -55,7 +55,7 @@
         "scripts/readiness.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "fd01c02d6361b8145565872af9bcb926a83436374d6835df13411e54a1a5227c"
+          "sha256": "9c014bad418da0aed7ba2b39e863f4a397ee9e2f8471474443314ec594ce5500"
         },
         "scripts/test_agent_eval.py": {
           "executable": true,
@@ -65,13 +65,13 @@
         "scripts/test_readiness.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "4c533ebcf3778b88ddd14c0539eb90988788f3266f1bc3bfe52e3fa2e95a9cb4"
+          "sha256": "1b56c1f0dd68a75d22700b71ccaeb41d91f2899b8706658cae63c9f666979213"
         }
       },
-      "fingerprint": "60253130f0e6d3714a9e262b4a1fd6b12f93a8b3051b202446c2a01ce0c8db5d",
-      "source_commit": "3232a245ce3d59ea00c0a59b7dc463fbc15d1282",
+      "fingerprint": "a90cd4ccf7ac3460b45f22a96f0c44066741e3410fb5de20e008eac8858cd735",
+      "source_commit": "14e36a63f8c5f209eb141fdf2c2aeaf5790db508",
       "source_repository": "https://github.com/zacharygcook/agent-readiness-scoring",
-      "version": "0.3.0"
+      "version": "0.4.0"
     },
     "ralph-loop": {
       "files": {
