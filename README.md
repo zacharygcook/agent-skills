@@ -31,9 +31,59 @@ Add `-g` to install globally.
   <img alt="Readiness loop: audit and prove evidence, choose one gap, make an authorized improvement, validate and rescore, then repeat until Level 5." src="assets/agent-readiness-loop-light.svg">
 </picture>
 
-## Start here
+## The Ralph loop
 
-### Set up this system
+Readiness makes a repository safe to work in. Ralph takes over when the work is clearly scoped and
+you want a controlled, long-running implementation loop.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#DCE8EC', 'primaryTextColor': '#18242B', 'primaryBorderColor': '#3D5B68', 'lineColor': '#5C707A', 'secondaryColor': '#E5EEE4', 'tertiaryColor': '#EDF1F2', 'edgeLabelBackground': '#F7F9F9', 'fontFamily': 'system-ui'}}}%%
+flowchart LR
+    spec["SPEC.md"] --> prepare["Prep sprint"]
+    prepare --> chunk["Run next chunk"]
+    chunk --> verify{"Verify chunk"}
+    verify -->|pass| more{"More chunks?"}
+    more -->|yes| chunk
+    more -->|no| hooks["Review → docs → final validation"]
+    verify -->|fail| repair["Repair handoff"]
+    repair --> chunk
+
+    classDef phase fill:#DCE8EC,stroke:#3D5B68,color:#18242B,stroke-width:1.5px;
+    classDef gate fill:#E5EEE4,stroke:#536D55,color:#18242B,stroke-width:1.5px;
+    classDef outcome fill:#EDF1F2,stroke:#5C707A,color:#18242B,stroke-width:1.5px;
+    class spec,prepare,chunk phase;
+    class verify,more gate;
+    class hooks,repair outcome;
+```
+
+`just run` completes the current prepared sprint and pauses. `just marathon` runs that same loop, then
+advances only to the next sequential sprint that is already prepared—it never plans new work. It ends
+cleanly when no next sprint is ready, and pauses with durable state on a failure, blocker, or exhausted
+budget.
+
+### Marathon mode
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#DCE8EC', 'primaryTextColor': '#18242B', 'primaryBorderColor': '#3D5B68', 'lineColor': '#5C707A', 'secondaryColor': '#E5EEE4', 'tertiaryColor': '#EDF1F2', 'edgeLabelBackground': '#F7F9F9', 'fontFamily': 'system-ui'}}}%%
+flowchart LR
+    marathon["just marathon"] --> sprint["Run current<br/>prepared sprint"]
+    sprint --> complete{"Sprint complete?"}
+    complete -->|yes| next{"Next sprint<br/>prepared?"}
+    next -->|yes, advance| sprint
+    next -->|no| done["Marathon complete"]
+    complete -->|no| pause["Pause: failure, blocker,<br/>or exhausted budget"]
+
+    classDef phase fill:#DCE8EC,stroke:#3D5B68,color:#18242B,stroke-width:1.5px;
+    classDef gate fill:#E5EEE4,stroke:#536D55,color:#18242B,stroke-width:1.5px;
+    classDef outcome fill:#EDF1F2,stroke:#5C707A,color:#18242B,stroke-width:1.5px;
+    class marathon,sprint phase;
+    class complete,next gate;
+    class done,pause outcome;
+```
+
+## Quickstart
+
+### 1. Establish agent readiness
 
 ```text
 $setup-agent-skills on my system
@@ -43,7 +93,7 @@ It inspects your machine and repository, finds available coding agents and prere
 recommends a small relevant set. It asks before installing anything. Optionally add one or two
 preferences, such as “for this repo” or “for Codex.”
 
-### Audit this repository
+Then assess the repository before asking an agent to work autonomously:
 
 ```text
 $agent-readiness audit this repo and suggest improvements
@@ -51,13 +101,25 @@ $agent-readiness audit this repo and suggest improvements
 
 It produces a read-only, evidence-backed assessment and the highest-value next improvements.
 
-### Set readiness preferences
+To make that assessment reusable:
 
 ```text
 $agent-readiness walk me through setting up my preferences
 ```
 
 It helps tailor repository preferences without overwriting an existing file.
+
+### 2. Run a Ralph loop
+
+Once the repository is ready and you have a `SPEC.md` plus credible validation commands:
+
+```text
+$ralph-loop set up a loop for this repository from SPEC.md
+```
+
+It preflights the repository, confirms the runtime choices with you, prepares and validates the
+first sprint, then stops before execution. Use `$ralph-sprint` to prepare later work,
+`$ralph-status` to inspect progress, and `$ralph-review` to assess a completed sprint.
 
 ## Skills shipped with this package
 
@@ -110,14 +172,6 @@ It helps tailor repository preferences without overwriting an existing file.
   workflows for people and automation.
 - [`write-public-readme`](skills/write-public-readme) — Write a clear public README that gets users
   to a trustworthy first result quickly.
-
-## Ralph loop
-
-For long-running autonomous implementation work:
-
-```text
-ralph-loop → ralph-sprint → ralph-status → ralph-review
-```
 
 ## License
 
