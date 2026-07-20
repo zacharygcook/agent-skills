@@ -8,8 +8,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 18,
-      "bytes": 238188,
-      "sha256": "38c563bd4afdf25e2768c344811a18011148beebc2bf0b51ff23f0289511c77c"
+      "bytes": 238200,
+      "sha256": "b221576239ec44cf772b80c4eeb15612c86d8aa5e1466d0712740180cb6e9cb1"
     },
     {
       "name": "ban-type-assertions",
