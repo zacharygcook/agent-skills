@@ -23,6 +23,14 @@ npx skills add zacharygcook/agent-skills@agent-readiness
 
 Add `-g` to install globally.
 
+## The readiness loop
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/agent-readiness-loop-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/agent-readiness-loop-light.svg">
+  <img alt="Readiness loop: audit and prove evidence, choose one gap, make an authorized improvement, validate and rescore, then repeat until Level 5." src="assets/agent-readiness-loop-light.svg">
+</picture>
+
 ## Start here
 
 ### Set up this system
@@ -110,17 +118,6 @@ For long-running autonomous implementation work:
 ```text
 ralph-loop → ralph-sprint → ralph-status → ralph-review
 ```
-
-## The readiness loop
-
-`agent-readiness` audits a repository with concrete evidence, chooses one high-value gap,
-builds a durable capability, then validates and rescores the result.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/agent-readiness-loop-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/agent-readiness-loop-light.svg">
-  <img alt="The agent readiness loop: audit the repository, capture evidence, choose one gap, implement durable capability, validate and rescore, then repeat until the target is reached." src="assets/agent-readiness-loop-light.svg">
-</picture>
 
 ## License
 
