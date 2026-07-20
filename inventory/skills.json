@@ -7,9 +7,9 @@
       "path": "skills/agent-readiness-scoring",
       "classification": "skills",
       "source": "curated",
-      "file_count": 13,
-      "bytes": 184468,
-      "sha256": "815237f7f347eb234d47780aedff1d9422d0361c0e240a7b4ab6a8ba3497b6da"
+      "file_count": 18,
+      "bytes": 233613,
+      "sha256": "6f89f651efb1d3c523b4d4c2339ec9e164f1701072b6c84b12a6e2b5db16ebce"
     },
     {
       "name": "ban-type-assertions",
