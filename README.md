@@ -53,22 +53,55 @@ It helps tailor repository preferences without overwriting an existing file.
 
 ## Skills shipped with this package
 
-Browse [all 23 skills](skills/), or start with one of these groups:
+### Repository readiness and autonomous work
 
-- **Repository readiness** — [`setup-agent-skills`](skills/setup-agent-skills),
-  [`agent-readiness-scoring`](skills/agent-readiness-scoring), and
-  [`repo-cleanup-auditor`](skills/repo-cleanup-auditor).
-- **Build, test, and review** — [`local-web-e2e`](skills/local-web-e2e),
-  [`expand-test-coverage`](skills/expand-test-coverage), [`code-review`](skills/code-review), and
-  [`handle-automated-code-review`](skills/handle-automated-code-review).
-- **Long-running and risky work** — [`ralph-loop`](skills/ralph-loop),
-  [`ralph-sprint`](skills/ralph-sprint), [`ralph-status`](skills/ralph-status),
-  [`ralph-review`](skills/ralph-review), and [`staged-script-rollout`](skills/staged-script-rollout).
-- **Codebase health and artifacts** — [`ban-type-assertions`](skills/ban-type-assertions),
-  [`fix-knip-unused-exports`](skills/fix-knip-unused-exports),
-  [`ui-css-performance`](skills/ui-css-performance),
-  [`perplexity-research`](skills/perplexity-research), and
-  [`mermaid-diagrams`](skills/mermaid-diagrams).
+- [`setup-agent-skills`](skills/setup-agent-skills) — Inspect the machine and repository, then
+  recommend and install a focused set of skills with approval.
+- [`agent-readiness-scoring`](skills/agent-readiness-scoring) — Audit and improve how safely and
+  effectively coding agents can work in a repository.
+- [`ralph-loop`](skills/ralph-loop) — Run hardened, resumable autonomous implementation loops.
+- [`ralph-sprint`](skills/ralph-sprint) — Turn a specification into the next reviewable sprint.
+- [`ralph-status`](skills/ralph-status) — Report truthful Ralph progress without changing state.
+- [`ralph-review`](skills/ralph-review) — Review a Ralph sprint before accepting it.
+- [`repo-cleanup-auditor`](skills/repo-cleanup-auditor) — Find evidence-backed cleanup candidates,
+  then wait for approval before changing files.
+- [`staged-script-rollout`](skills/staged-script-rollout) — Run live-writing scripts through dry
+  runs, limited execution, audit, ramp-up, and rollback.
+
+### Testing and review
+
+- [`local-web-e2e`](skills/local-web-e2e) — Build and debug reliable local browser test suites.
+- [`good-test-bad-test`](skills/good-test-bad-test) — Distinguish behavior tests from coverage
+  theater and temporary proof tests.
+- [`expand-test-coverage`](skills/expand-test-coverage) — Add meaningful coverage and fix real
+  defects it exposes.
+- [`code-review`](skills/code-review) — Perform adversarial, evidence-backed code review.
+- [`handle-automated-code-review`](skills/handle-automated-code-review) — Verify and triage AI or
+  automation review findings.
+- [`triage-stale-pull-requests`](skills/triage-stale-pull-requests) — Decide whether an old pull
+  request should be closed, salvaged, refreshed, or merged.
+
+### Codebase health and artifacts
+
+- [`ban-type-assertions`](skills/ban-type-assertions) — Replace TypeScript casts with safer
+  narrowing, validation, or API design.
+- [`fix-knip-unused-exports`](skills/fix-knip-unused-exports) — Resolve unused exports without
+  suppressing or disguising dead code.
+- [`ui-css-performance`](skills/ui-css-performance) — Keep UI source, Tailwind scanning, CSS, and
+  dependencies small and measurable.
+- [`postgres-queue-health`](skills/postgres-queue-health) — Diagnose Postgres queue performance,
+  MVCC, vacuum, indexes, and retention.
+- [`perplexity-research`](skills/perplexity-research) — Run current, citation-backed research.
+- [`mermaid-diagrams`](skills/mermaid-diagrams) — Create, render, and verify diagrams as code.
+- [`local-html-pdf-reports`](skills/local-html-pdf-reports) — Create polished local Markdown, HTML,
+  PDF, and rendered report artifacts.
+
+### Developer experience
+
+- [`design-human-first-cli`](skills/design-human-first-cli) — Design short, safe, discoverable CLI
+  workflows for people and automation.
+- [`write-public-readme`](skills/write-public-readme) — Write a clear public README that gets users
+  to a trustworthy first result quickly.
 
 ## Ralph loop
 
