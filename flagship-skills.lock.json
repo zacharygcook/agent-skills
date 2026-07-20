@@ -10,7 +10,7 @@
         "VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "87b241b275c591694846560e9879f50c9da3150f854efdabd782c539772f3033"
+          "sha256": "a466ef209f5c3aee5ff0c702e2e9d5cced4783d2a655e8ab66330f21a5557b3f"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -30,7 +30,7 @@
         "assets/readiness-loop-dark.svg": {
           "executable": false,
           "kind": "file",
-          "sha256": "efe86f928afb25769d520893ac5fb749541ba6a47b8a3eed0cb32643cad0e5c7"
+          "sha256": "a0c46ba99c9165860cdc324736a724f54e5b37bf4a55f5eae5b18af167c49a2a"
         },
         "assets/readiness-loop-light.json": {
           "executable": false,
@@ -45,7 +45,7 @@
         "assets/readiness-loop.svg": {
           "executable": false,
           "kind": "file",
-          "sha256": "9d1133532e9f7e85dfddc139672dbd9f0ed48f37655a55f760042362c8694b6f"
+          "sha256": "b89904c8f4c229c57c328ed4ce16eb85bd47d37a518253fbd61516538202dd98"
         },
         "evals/scenarios.json": {
           "executable": false,
@@ -90,13 +90,13 @@
         "scripts/test_readiness.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "0451b4b0c722815c7070a25142757763672249067566d88221ac902285083446"
+          "sha256": "d08b6d87373cd45b8e9b16a8370ab3e59d88f922f3b157b4aff99c02b42cf55a"
         }
       },
-      "fingerprint": "c17cd9d63f020da55170523334004884321ad1e41441e923b512e4e8b1b1f80a",
-      "source_commit": "4ffa94c70a852d3425259c24978baba94269b4eb",
+      "fingerprint": "514a98a8ce5bc2ebd6fa1153f52cf6522f222cdb836f10d4dfc6229b3c72d1b7",
+      "source_commit": "173f25b30bc19222e32d9da30a6bd58b56ddce82",
       "source_repository": "git@github.com:zacharygcook/agent-readiness.git",
-      "version": "0.6.1"
+      "version": "0.6.2"
     },
     "ralph-loop": {
       "files": {
