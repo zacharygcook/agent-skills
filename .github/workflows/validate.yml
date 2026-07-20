@@ -29,10 +29,10 @@ jobs:
         run: python3 scripts/sync_flagship_skills.py check
       - name: Test flagship synchronization safety
         run: PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_sync_flagship_skills.py -v
-      - name: Test readiness scoring engine
-        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_readiness.py -v
+      - name: Test agent readiness engine
+        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness/scripts/test_readiness.py -v
       - name: Test readiness behavioral evaluation harness
-        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness-scoring/scripts/test_agent_eval.py -v
+        run: PYTHONDONTWRITEBYTECODE=1 python3 skills/agent-readiness/scripts/test_agent_eval.py -v
       - name: Test onboarding doctor
         run: PYTHONDONTWRITEBYTECODE=1 python3 skills/setup-agent-skills/scripts/test_doctor.py -v
       - name: Test hardened Ralph runtime
