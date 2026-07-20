@@ -10,7 +10,7 @@
         "VERSION": {
           "executable": false,
           "kind": "file",
-          "sha256": "97a5d6e540a6120d09c39ddb667e0e8e2bac7fcc2ffef813b82e08fd60365bce"
+          "sha256": "87b241b275c591694846560e9879f50c9da3150f854efdabd782c539772f3033"
         },
         "agents/openai.yaml": {
           "executable": false,
@@ -25,27 +25,27 @@
         "assets/readiness-loop-dark.json": {
           "executable": false,
           "kind": "file",
-          "sha256": "27dafb2742d0da69a49cc8d206fc9cc429feff09cc3738addcf590d9c4358f97"
+          "sha256": "4c52f07197836a6cbe4e14c987af31d5bcd248d009900ed21662ff164cd194d0"
         },
         "assets/readiness-loop-dark.svg": {
           "executable": false,
           "kind": "file",
-          "sha256": "3735d28c02ccff8176b36ddb04a88ae10c8cba063dc314c2b61c8aa7b34ab600"
+          "sha256": "efe86f928afb25769d520893ac5fb749541ba6a47b8a3eed0cb32643cad0e5c7"
         },
         "assets/readiness-loop-light.json": {
           "executable": false,
           "kind": "file",
-          "sha256": "660c0d9db7eaeb89c038fa97c4795fe24d4d992d9dd6b9e90662513342e38e37"
+          "sha256": "7fde7bfa67e4d4fbb0069a7d901797db12ebd51b337236e0d522a7a8d62e69e4"
         },
         "assets/readiness-loop.mmd": {
           "executable": false,
           "kind": "file",
-          "sha256": "7c7df933eef56222bd978539e154883d5afae0de1c8b4779f62b35562037e25b"
+          "sha256": "3554a031a687cc6b8131f273d0e09fc92577b60aa735f3c5c8e3f8f4b2892def"
         },
         "assets/readiness-loop.svg": {
           "executable": false,
           "kind": "file",
-          "sha256": "1d5953935d1876bb72f6a89bfcdd3991f182e35ba1dacfbe4e97b08b84f44ece"
+          "sha256": "9d1133532e9f7e85dfddc139672dbd9f0ed48f37655a55f760042362c8694b6f"
         },
         "evals/scenarios.json": {
           "executable": false,
@@ -90,13 +90,13 @@
         "scripts/test_readiness.py": {
           "executable": true,
           "kind": "file",
-          "sha256": "0271cd675559c12a7c486972867748f5fd990a9cb7bc7fd0aede89fa7ffbea3c"
+          "sha256": "0451b4b0c722815c7070a25142757763672249067566d88221ac902285083446"
         }
       },
-      "fingerprint": "2b955a8401b36bf2acc57d4517eeaf77ef8a4c15196c12c08fa87b2ab73ce2cd",
-      "source_commit": "71c15e6ce6e0942c96272eabcfd052e344059f53",
+      "fingerprint": "c17cd9d63f020da55170523334004884321ad1e41441e923b512e4e8b1b1f80a",
+      "source_commit": "4ffa94c70a852d3425259c24978baba94269b4eb",
       "source_repository": "git@github.com:zacharygcook/agent-readiness.git",
-      "version": "0.6.0"
+      "version": "0.6.1"
     },
     "ralph-loop": {
       "files": {
