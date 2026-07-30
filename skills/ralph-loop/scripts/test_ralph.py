@@ -412,6 +412,36 @@ class RalphRuntimeTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertGreaterEqual(len(scripts), 7)
 
+    def test_runtime_parses_config_as_data_without_executing_shell_code(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory) / "repo"
+            initialize_repo(repo)
+            initialized = run_cli(
+                "init",
+                "--repo",
+                str(repo),
+                "--agent",
+                "custom",
+                "--agent-command",
+                "true",
+                *BUDGET_ARGS,
+                "--disable-chunk-validation",
+                "--disable-sprint-validation",
+            )
+            self.assertEqual(initialized.returncode, 0, initialized.stderr)
+
+            marker = Path(directory) / "config-code-ran"
+            config = repo / ".ralph" / "config.env"
+            config.write_text(
+                config.read_text(encoding="utf-8")
+                + f"INJECTED=$(touch {shlex.quote(str(marker))})\n",
+                encoding="utf-8",
+            )
+            status = run(str(repo / ".ralph" / "status.sh"), cwd=repo)
+            self.assertNotEqual(status.returncode, 0)
+            self.assertIn("Refusing invalid Ralph configuration", status.stderr)
+            self.assertFalse(marker.exists())
+
     def test_init_records_choices_and_safely_upgrades_an_existing_runtime(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             repo = Path(directory) / "repo with spaces"

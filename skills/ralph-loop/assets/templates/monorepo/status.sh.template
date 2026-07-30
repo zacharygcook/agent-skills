@@ -4,15 +4,17 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/config.env"
 source "$SCRIPT_DIR/lib/ralph-common.sh"
+PYTHON_BIN=$(find_python) || exit 12
+load_ralph_config "$SCRIPT_DIR/config.env" \
+  CURRENT_SPRINT RALPH_AGENT RALPH_AGENT_MODEL RALPH_AGENT_REASONING \
+  MAX_SPRINT_ITERATIONS MAX_CHUNK_ITERATIONS
 
 missing=$(require_commands jq || true)
 if [[ -n "$missing" ]]; then
   echo "$missing"
   exit 12
 fi
-PYTHON_BIN=$(find_python) || exit 12
 
 SPRINT="${1:-${CURRENT_SPRINT:-}}"
 if [[ -z "$SPRINT" ]]; then

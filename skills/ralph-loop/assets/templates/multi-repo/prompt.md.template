@@ -6,7 +6,8 @@ The working directory is a parent orchestrator containing `.ralph/` and two or m
 
 ## Instructions
 
-1. Read `.ralph/config.env` to learn the configured repository names.
+1. Read `.ralph/.runtime-manifest.json` to learn the configured repository names; never read
+   `.ralph/config.env`.
 2. Read `.ralph/sprints/[SPRINT_FOLDER]/SCRATCHPAD.md` for durable context from earlier iterations.
 3. Read `IMPLEMENTATION_PLAN.md`, `README.md`, `relevant-specs.md`, and `chunks.json` in the sprint directory.
 4. Find the first chunk where `passes: false`; its `repo` field names one configured repository or uses `all`/`both`.

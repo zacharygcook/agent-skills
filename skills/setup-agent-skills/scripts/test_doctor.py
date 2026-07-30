@@ -250,7 +250,7 @@ class DoctorTest(unittest.TestCase):
             "owner/repo", ["one", "two"], ["codex", "claude-code"], False
         )
         self.assertEqual(
-            project[:5], ["npx", "skills@latest", "add", "owner/repo", "--skill"]
+            project[:5], ["npx", "skills@1.5.21", "add", "owner/repo", "--skill"]
         )
         self.assertIn("--copy", project)
         self.assertNotIn("--global", project)

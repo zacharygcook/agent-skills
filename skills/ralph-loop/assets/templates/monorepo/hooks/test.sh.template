@@ -6,8 +6,11 @@ SPRINT_DIR="${1:?Usage: test.sh <sprint-dir>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RALPH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$RALPH_DIR/.." && pwd)"
-source "$RALPH_DIR/config.env"
 source "$RALPH_DIR/lib/ralph-common.sh"
+PYTHON_BIN=$(find_python) || exit 12
+load_ralph_config "$RALPH_DIR/config.env" \
+  RALPH_SPRINT_VALIDATION_ENABLED RALPH_TESTS_ENABLED \
+  RALPH_SPRINT_VALIDATION_COMMAND RALPH_TEST_COMMAND RALPH_E2E_COMMAND
 MANIFEST="$SPRINT_DIR/manifest.json"
 
 set_phase() {

@@ -19,6 +19,7 @@ from typing import Any, Mapping, Sequence
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CATALOG = SKILL_ROOT / "references" / "catalog.json"
+SKILLS_CLI_PACKAGE = "skills@1.5.21"
 IGNORED_DIRECTORIES = {
     ".git",
     ".hg",
@@ -376,6 +377,7 @@ def iter_repository_files(root: Path, limit: int = 5000) -> list[Path]:
 
 
 def safe_text(path: Path, max_bytes: int = 1_000_000) -> str:
+    """Read bounded probe input that is matched locally and never copied into reports."""
     try:
         if not path.is_file() or path.stat().st_size > max_bytes:
             return ""
@@ -745,7 +747,7 @@ def build_install_argv(
     agents: Sequence[str],
     global_scope: bool,
 ) -> list[str]:
-    argv = ["npx", "skills@latest", "add", source, "--skill", *skills, "--copy"]
+    argv = ["npx", SKILLS_CLI_PACKAGE, "add", source, "--skill", *skills, "--copy"]
     if agents:
         argv.extend(["--agent", *agents])
     if global_scope:

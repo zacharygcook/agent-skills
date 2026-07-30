@@ -12,9 +12,8 @@ help:
 init:
     "{{ ralph }}" init --repo "{{ repo }}"
 
-[doc('Update the skill and safely upgrade the runtime')]
+[doc('Safely upgrade the runtime from the installed skill package')]
 upgrade:
-    npx skills update ralph-loop ralph-sprint ralph-status ralph-review --project
     "{{ ralph }}" upgrade --repo "{{ repo }}"
 
 [doc('Validate runtime, configuration, and sprint state')]

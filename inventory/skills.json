@@ -71,8 +71,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 2,
-      "bytes": 3098,
-      "sha256": "97c55a46d0b417d5285aaff1e35671f3e422dcac14a069175433d6c8b580c83b"
+      "bytes": 3495,
+      "sha256": "43792492faf703465b062bfc45c2c63c6b8ba43d344677cd0e0e0a05b5391067"
     },
     {
       "name": "local-html-pdf-reports",
@@ -107,8 +107,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 2,
-      "bytes": 3459,
-      "sha256": "e891ef55630b50731873bccabe4c8e096d820c35eafccb3145111860de0ef614"
+      "bytes": 3898,
+      "sha256": "857c6cd3bd9bed2e717086af94e3d3e27c1b7d676cfaa8b78b99e0b0127c8840"
     },
     {
       "name": "postgres-queue-health",
@@ -124,9 +124,9 @@
       "path": "skills/ralph-loop",
       "classification": "skills",
       "source": "curated",
-      "file_count": 49,
-      "bytes": 292229,
-      "sha256": "aade408b7c18e591cc5000a4fcd57064ccb16ccec835a84027335406ef9ef6c5"
+      "file_count": 50,
+      "bytes": 298872,
+      "sha256": "e06374b0e0c3b72744b700fe5760396f552b764346b398f9b7306518822239fa"
     },
     {
       "name": "ralph-review",
@@ -135,7 +135,7 @@
       "source": "curated",
       "file_count": 3,
       "bytes": 1707,
-      "sha256": "2da63081dcaa87f92d8ef693b1f2dabe088a8c40a14c4a31b2a1ac8cb9b5d627"
+      "sha256": "432f850368468dcd2e9d162f35be36b99531040fa7d417208ee3fdaf736431b2"
     },
     {
       "name": "ralph-sprint",
@@ -144,7 +144,7 @@
       "source": "curated",
       "file_count": 3,
       "bytes": 1815,
-      "sha256": "d090c613311e3cc9e3083d6e3f2f0d22d814e2f49481da02d152d1be0068bab8"
+      "sha256": "5230b919e3ebbd0cc776cef3b2a3d44f1091c25109fca015719c38427c1326ac"
     },
     {
       "name": "ralph-status",
@@ -152,8 +152,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 3,
-      "bytes": 1599,
-      "sha256": "2a719e3733696b03c6e1cd967e2cce92c5bf3fd99ae060d55b77cc044ef1628d"
+      "bytes": 1966,
+      "sha256": "0a16616b78109d7a01dd880284e29f7e502c087b6a4f7ab60688b11ff5a79d96"
     },
     {
       "name": "repo-cleanup-auditor",
@@ -170,8 +170,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 65375,
-      "sha256": "7a2c8951e49e8835b74247fbb4fbf163039106c0828d2ebb7d59533426b43dd9"
+      "bytes": 65818,
+      "sha256": "e582b2b27216175ace9849dc59bb7880a0105a4f0ef1c34eaeda019b6565bd8c"
     },
     {
       "name": "staged-script-rollout",
@@ -188,8 +188,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 2,
-      "bytes": 2530,
-      "sha256": "0671c9473133eaeaa7f27863d40ff1aadb39ad85243b239de2fc17af22150770"
+      "bytes": 2880,
+      "sha256": "5843c474ea6a597bd5dd23a5caae3067881e582d110af100808617f837d6497b"
     },
     {
       "name": "ui-css-performance",

@@ -52,7 +52,7 @@ This project uses Ralph for autonomous coding:
 ./.ralph/loop.sh
 
 # Current sprint
-cat .ralph/config.env | grep CURRENT_SPRINT
+just status
 ```
 
 See `.ralph/CLAUDE.md` or `.ralph/sprints/*/README.md` for sprint details.

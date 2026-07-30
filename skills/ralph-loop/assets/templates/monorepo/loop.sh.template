@@ -4,8 +4,15 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/config.env"
 source "$SCRIPT_DIR/lib/ralph-common.sh"
+PYTHON_BIN=$(find_python) || exit 12
+load_ralph_config "$SCRIPT_DIR/config.env" \
+  CURRENT_SPRINT RALPH_AGENT RALPH_AGENT_MODEL RALPH_AGENT_REASONING \
+  RALPH_AGENT_COMMAND RALPH_STATE_MODE RALPH_AUTO_COMMIT \
+  MAX_SPRINT_ITERATIONS MAX_CHUNK_ITERATIONS HEARTBEAT_SEC \
+  AGENT_IDLE_TIMEOUT_SEC POST_RESULT_IDLE_SEC \
+  RALPH_CHUNK_VALIDATION_ENABLED RALPH_CHUNK_VALIDATION_COMMAND \
+  VALIDATION_HEARTBEAT_SEC VALIDATION_IDLE_TIMEOUT_SEC
 
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 MAX_SPRINT_ITERATIONS="${MAX_SPRINT_ITERATIONS:-}"
@@ -33,7 +40,6 @@ if [[ -n "$missing" ]]; then
   echo "$missing"
   exit 12
 fi
-PYTHON_BIN=$(find_python) || exit 12
 for budget in "$MAX_SPRINT_ITERATIONS" "$MAX_CHUNK_ITERATIONS"; do
   if [[ ! "$budget" =~ ^[1-9][0-9]*$ ]]; then
     echo "MAX_SPRINT_ITERATIONS and MAX_CHUNK_ITERATIONS must be positive integers"

@@ -6,8 +6,12 @@ SPRINT_DIR="${1:?Usage: review.sh <sprint-dir>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RALPH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$RALPH_DIR/.." && pwd)"
-source "$RALPH_DIR/config.env"
 source "$RALPH_DIR/lib/ralph-common.sh"
+PYTHON_BIN=$(find_python) || exit 12
+load_ralph_config "$RALPH_DIR/config.env" \
+  RALPH_REVIEW_ENABLED RALPH_REVIEW_AGENT \
+  RALPH_AGENT RALPH_AGENT_MODEL RALPH_AGENT_REASONING RALPH_AGENT_COMMAND \
+  RALPH_STATE_MODE RALPH_REPOS
 
 if [[ "${RALPH_REVIEW_ENABLED:-true}" != "true" ]]; then
   echo "Review hook disabled explicitly by RALPH_REVIEW_ENABLED=false"

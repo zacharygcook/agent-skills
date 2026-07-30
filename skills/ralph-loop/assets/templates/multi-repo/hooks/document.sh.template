@@ -6,8 +6,12 @@ SPRINT_DIR="${1:?Usage: document.sh <sprint-dir>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RALPH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$RALPH_DIR/.." && pwd)"
-source "$RALPH_DIR/config.env"
 source "$RALPH_DIR/lib/ralph-common.sh"
+PYTHON_BIN=$(find_python) || exit 12
+load_ralph_config "$RALPH_DIR/config.env" \
+  RALPH_DOCUMENTATION_ENABLED RALPH_DOCUMENTATION_AGENT \
+  RALPH_AGENT RALPH_AGENT_MODEL RALPH_AGENT_REASONING RALPH_AGENT_COMMAND \
+  RALPH_STATE_MODE
 
 if [[ "${RALPH_DOCUMENTATION_ENABLED:-true}" != "true" ]]; then
   echo "Documentation hook disabled explicitly by RALPH_DOCUMENTATION_ENABLED=false"

@@ -3,6 +3,29 @@
 # Shared helpers for Ralph loop + hooks.
 # shellcheck disable=SC2120
 
+load_ralph_config() {
+  local config_path="${1:?config path required}"
+  shift
+  local helper_dir helper key value
+  helper_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  helper="$helper_dir/read-config.py"
+  [[ -n "${PYTHON_BIN:-}" ]] || {
+    echo "PYTHON_BIN must be selected before loading config" >&2
+    return 14
+  }
+  [[ -f "$helper" ]] || {
+    echo "Missing managed config reader: $helper" >&2
+    return 14
+  }
+  for key in "$@"; do
+    if ! value=$("$PYTHON_BIN" "$helper" "$config_path" "$key"); then
+      echo "Refusing invalid Ralph configuration: $config_path" >&2
+      return 14
+    fi
+    printf -v "$key" '%s' "$value"
+  done
+}
+
 now_iso() {
   date -u "+%Y-%m-%dT%H:%M:%SZ"
 }
