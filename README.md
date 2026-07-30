@@ -12,10 +12,11 @@ and reviews, and controlled long-running work.
 Install the collection in the current project:
 
 ```bash
-npx skills add zacharygcook/agent-skills
+npx skills add zacharygcook/agent-skills --skill '*'
 ```
 
-Or install one workflow:
+This installs all 23 workflows and prompts only for the coding agents to install them into. Or
+install one workflow:
 
 ```bash
 npx skills add zacharygcook/agent-skills@agent-readiness
