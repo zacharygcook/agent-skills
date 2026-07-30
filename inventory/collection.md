@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository contains 23 generally useful skills: 22 engineering workflows selected from personal reusable packages and project-derived work, plus a repository-aware onboarding concierge. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
+This repository contains 25 generally useful skills: 24 engineering workflows selected from personal reusable packages and project-derived work, plus a repository-aware onboarding concierge. Project-specific originals remain in their source repositories; this collection contains generalized extractions.
 
 The source search covered personal agent discovery directories, selected software repositories, duplicate worktrees, and two personal workstations. Exact duplicates and stale variants were collapsed.
 
@@ -38,6 +38,11 @@ scope, and agent approval before project or global installation.
 `agent-readiness` is synchronized from its standalone canonical package while excluding
 standalone-repository maintenance files. Its distributable scoring, reporting, comparison, package
 doctor/vendor, and behavioral-evaluation tools remain intact.
+
+`no-bullshit` and `no-bullshit-launch` are synchronized from their standalone canonical package.
+They remain explicitly invoked modes: the base skill favors direct, practical collaboration, while
+launch mode adds MVP focus and loads the base skill without turning planning into permission to
+implement.
 
 The four Ralph skills are synchronized from the standalone `zach-ralph-method` canonical package.
 `ralph-loop` owns the project-neutral runtime; the focused sprint, status, and review skills expose

@@ -98,6 +98,52 @@
       "source_repository": "git@github.com:zacharygcook/agent-readiness.git",
       "version": "0.6.2"
     },
+    "no-bullshit": {
+      "files": {
+        "SKILL.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "66bbbcc9421e8cc391f285b21a8352d1fcc5875b51897b125d1e938d0e655172"
+        },
+        "agents/openai.yaml": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "b42c2cc1a8172d57031f126ded707cc89656d1d8a53a206fce03c9a61a728c69"
+        },
+        "assets/VERSION": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "80447316529fc62014fbaa047fb67c51ac30e32830cda370405349d8d66d196c"
+        }
+      },
+      "fingerprint": "b2321dd881f9938344bdee26ca90b82ec4fcf41427a909a440b1cf29ae815026",
+      "source_commit": "7863b974127e9573db89ec9648109562032f55b6",
+      "source_repository": "git@github.com:zacharygcook/no-bullshit.git",
+      "version": "0.1.1"
+    },
+    "no-bullshit-launch": {
+      "files": {
+        "SKILL.md": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "0436f2f15dfffe4bd894fe2a692d068c201b346aecbd17a39df7b55bd00e2f56"
+        },
+        "agents/openai.yaml": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "00fb01de88f8a89c080faeb237039a69e6f378ed4ddd901f9ff116156848f15c"
+        },
+        "assets/VERSION": {
+          "executable": false,
+          "kind": "file",
+          "sha256": "80447316529fc62014fbaa047fb67c51ac30e32830cda370405349d8d66d196c"
+        }
+      },
+      "fingerprint": "3c39f8e12dcc22c24cc33535670ca85e2f2e99698926e744d8032bf25b47e7d6",
+      "source_commit": "7863b974127e9573db89ec9648109562032f55b6",
+      "source_repository": "git@github.com:zacharygcook/no-bullshit.git",
+      "version": "0.1.1"
+    },
     "ralph-loop": {
       "files": {
         "SKILL.md": {

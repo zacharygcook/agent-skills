@@ -177,9 +177,16 @@ def source_metadata(source_root: Path, manifest: dict[str, Any]) -> dict[str, st
     if run_git(source_root, "status", "--porcelain"):
         raise SyncError(f"Canonical source has uncommitted changes: {source_root}")
     head = run_git(source_root, "rev-parse", "HEAD")
-    remote_head = run_git(source_root, "rev-parse", "origin/master")
+    upstream = run_git(
+        source_root,
+        "rev-parse",
+        "--abbrev-ref",
+        "--symbolic-full-name",
+        "@{upstream}",
+    )
+    remote_head = run_git(source_root, "rev-parse", upstream)
     if head != remote_head:
-        raise SyncError(f"Canonical source HEAD is not pushed to origin/master: {source_root}")
+        raise SyncError(f"Canonical source HEAD is not pushed to {upstream}: {source_root}")
     remote = run_git(source_root, "remote", "get-url", "origin")
     version_path = source_root / safe_relative(str(manifest.get("version_file", "VERSION")), "version")
     version = version_path.read_text(encoding="utf-8").strip()

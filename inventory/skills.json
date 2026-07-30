@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "skill_count": 23,
+  "skill_count": 25,
   "skills": [
     {
       "name": "agent-readiness",
@@ -102,6 +102,24 @@
       "sha256": "1fbbdb7f9d976d9e0de6e1ad8ab1961b4841278a9ed61db04ecea6fa4079d489"
     },
     {
+      "name": "no-bullshit",
+      "path": "skills/no-bullshit",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 4909,
+      "sha256": "513ea942f0c322400b7865a8eca370abbbc30a3918c20b2817df44335c926bea"
+    },
+    {
+      "name": "no-bullshit-launch",
+      "path": "skills/no-bullshit-launch",
+      "classification": "skills",
+      "source": "curated",
+      "file_count": 3,
+      "bytes": 6354,
+      "sha256": "001d8bc380ab5545e4347ba6b5b57708b54b87bc14dddf3d153d68c65b9f8e72"
+    },
+    {
       "name": "perplexity-research",
       "path": "skills/perplexity-research",
       "classification": "skills",
@@ -170,8 +188,8 @@
       "classification": "skills",
       "source": "curated",
       "file_count": 5,
-      "bytes": 65818,
-      "sha256": "e582b2b27216175ace9849dc59bb7880a0105a4f0ef1c34eaeda019b6565bd8c"
+      "bytes": 67226,
+      "sha256": "105d1e68e601c0b5c49ce972f061c9f5e935f6cc8dc3ca8becec4104d2728908"
     },
     {
       "name": "staged-script-rollout",

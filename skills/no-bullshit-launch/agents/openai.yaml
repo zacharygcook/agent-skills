@@ -1,0 +1,4 @@
+interface:
+  display_name: "No Bullshit Launch"
+  short_description: "Focus product work on a real MVP"
+  default_prompt: "Use $no-bullshit-launch to assess the shortest path to a real MVP while keeping me in control of what gets implemented."

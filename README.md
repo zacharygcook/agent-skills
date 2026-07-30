@@ -15,7 +15,7 @@ Install the collection in the current project:
 npx skills add zacharygcook/agent-skills --skill '*'
 ```
 
-This installs all 23 workflows and prompts only for the coding agents to install them into. Or
+This installs all 25 workflows and prompts only for the coding agents to install them into. Or
 install one workflow:
 
 ```bash
@@ -23,6 +23,21 @@ npx skills add zacharygcook/agent-skills@agent-readiness
 ```
 
 Add `-g` to install globally.
+
+## No-bullshit modes
+
+`no-bullshit` keeps agent work blunt, brief, practical, and inside the requested scope.
+`no-bullshit-launch` adds ruthless MVP focus without turning an assessment or planning prompt into
+permission to build the whole product. Both activate only when explicitly invoked, and launch mode
+loads the base mode.
+
+Install the pair:
+
+```bash
+npx skills add zacharygcook/agent-skills --skill no-bullshit no-bullshit-launch
+```
+
+Then use `$no-bullshit` or `$no-bullshit-launch` by name.
 
 ## The readiness loop
 
@@ -131,6 +146,13 @@ first sprint, then stops before execution. Use `$ralph-sprint` to prepare later 
 `$ralph-status` to inspect progress, and `$ralph-review` to assess a completed sprint.
 
 ## Skills shipped with this package
+
+### Direct collaboration and launch focus
+
+- [`no-bullshit`](skills/no-bullshit) — Work directly, honestly, and practically without invented
+  ceremony or unapproved scope expansion.
+- [`no-bullshit-launch`](skills/no-bullshit-launch) — Apply the same mindset while defending the
+  shortest real path to a user-viable MVP.
 
 ### Repository readiness and autonomous work
 

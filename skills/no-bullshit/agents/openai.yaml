@@ -1,0 +1,4 @@
+interface:
+  display_name: "No Bullshit"
+  short_description: "Direct, practical, plain-English collaboration"
+  default_prompt: "Use $no-bullshit to give me a direct answer and take the shortest practical path without expanding the requested scope."

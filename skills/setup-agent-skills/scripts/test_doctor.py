@@ -48,9 +48,9 @@ class DoctorTest(unittest.TestCase):
             "agents": [],
         }
 
-    def test_catalog_defines_seven_packs_and_all_twenty_three_skills(self) -> None:
-        self.assertEqual(len(self.catalog["packs"]), 7)
-        self.assertEqual(len(self.catalog["skills"]), 23)
+    def test_catalog_defines_eight_packs_and_all_twenty_five_skills(self) -> None:
+        self.assertEqual(len(self.catalog["packs"]), 8)
+        self.assertEqual(len(self.catalog["skills"]), 25)
         self.assertIn("setup-agent-skills", self.catalog["skills"])
         self.assertIn("agent-readiness", self.catalog["skills"])
         self.assertIn("write-public-readme", self.catalog["skills"])
@@ -59,6 +59,8 @@ class DoctorTest(unittest.TestCase):
         self.assertIn("ralph-sprint", self.catalog["skills"])
         self.assertIn("ralph-status", self.catalog["skills"])
         self.assertIn("ralph-review", self.catalog["skills"])
+        self.assertIn("no-bullshit", self.catalog["skills"])
+        self.assertIn("no-bullshit-launch", self.catalog["skills"])
 
     def test_fingerprint_detects_web_postgres_queue_and_review_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -217,6 +219,23 @@ class DoctorTest(unittest.TestCase):
                 "ui-css-performance",
             }.issubset(names)
         )
+
+    def test_no_bullshit_pack_keeps_the_two_modes_together(self) -> None:
+        machine = self.empty_machine()
+        repository = {"signals": {"always": ["setup baseline"]}}
+        recommendations = doctor.recommend_skills(
+            self.catalog,
+            repository,
+            machine,
+            {},
+            ["no-bullshit"],
+            [],
+            Path(machine["home"]),
+            {},
+        )
+        names = {item["name"] for item in recommendations}
+        self.assertIn("no-bullshit", names)
+        self.assertIn("no-bullshit-launch", names)
 
     def test_project_plan_does_not_treat_global_install_as_vendored(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

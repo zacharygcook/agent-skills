@@ -25,7 +25,12 @@ def run(*arguments: str, cwd: Path | None = None) -> subprocess.CompletedProcess
     return subprocess.run(arguments, cwd=cwd, check=False, capture_output=True, text=True)
 
 
-def initialize_source(root: Path, name: str = "demo-skill", version: str = "1.0.0") -> Path:
+def initialize_source(
+    root: Path,
+    name: str = "demo-skill",
+    version: str = "1.0.0",
+    branch: str = "master",
+) -> Path:
     remote = root.parent / f"{root.name}.git"
     run("git", "init", "--bare", str(remote))
     root.mkdir()
@@ -57,13 +62,13 @@ def initialize_source(root: Path, name: str = "demo-skill", version: str = "1.0.
         encoding="utf-8",
     )
     for command in (
-        ("git", "init", "-b", "master"),
+        ("git", "init", "-b", branch),
         ("git", "config", "user.name", "Sync Test"),
         ("git", "config", "user.email", "sync@example.com"),
         ("git", "remote", "add", "origin", str(remote)),
         ("git", "add", "SKILL.md", "VERSION", "scripts/helper.sh", "skill-package.json"),
         ("git", "commit", "-m", "Create canonical package"),
-        ("git", "push", "-u", "origin", "master"),
+        ("git", "push", "-u", "origin", branch),
     ):
         result = run(*command, cwd=root)
         if result.returncode != 0:
@@ -103,6 +108,12 @@ class FlagshipSyncTest(unittest.TestCase):
         report = sync.check_all()
         self.assertFalse(report["ok"])
         self.assertEqual(report["packages"][0]["differences"]["changed"], ["scripts/helper.sh"])
+
+    def test_main_branch_source_is_supported(self) -> None:
+        source = initialize_source(self.root / "source", branch="main")
+        applied = sync.update_package("demo-skill", source, True)
+        self.assertTrue(applied["applied"])
+        self.assertTrue(sync.check_all()["ok"])
 
     def test_update_deletes_removed_files_and_requires_version_bump(self) -> None:
         source = initialize_source(self.root / "source")
