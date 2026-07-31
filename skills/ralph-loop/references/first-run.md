@@ -24,7 +24,9 @@ Use when an operator has installed the skill but has not yet prepared or run a s
 2. Decompose the spec into dependency-ordered sprints without creating speculative later sprint
    folders.
 3. Create the first sprint with `README.md`, `IMPLEMENTATION_PLAN.md`, `relevant-specs.md`,
-   `chunks.json`, `prompt.md`, and `SCRATCHPAD.md`.
+   `chunks.json`, `prompt.md`, and `SCRATCHPAD.md`. Because harnesses run from the repository or
+   orchestration root, make every sprint-file reference in `prompt.md` root-relative, for example
+   `.ralph/sprints/<sprint-name>/SCRATCHPAD.md`; never rely on a bare `SCRATCHPAD.md`.
 4. Set `CURRENT_SPRINT` in `.ralph/config.env`.
 5. In tracked mode, create a scoped setup commit containing the vendored skills, `justfile`, runtime,
    and prepared sprint before execution.

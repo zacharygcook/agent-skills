@@ -93,8 +93,12 @@ def create_sprint(root: Path, name: str = "1-demo", repo: str | None = None) -> 
         "SCRATCHPAD.md",
     ):
         (sprint / filename).write_text(f"# {filename}\n", encoding="utf-8")
+    prefix = f".ralph/sprints/{name}"
     (sprint / "prompt.md").write_text(
-        "Read SCRATCHPAD.md first. Update chunks.json and emit RALPH_CHUNK_COMPLETE.\n",
+        f"Read {prefix}/SCRATCHPAD.md first, then "
+        f"{prefix}/IMPLEMENTATION_PLAN.md, {prefix}/README.md, and "
+        f"{prefix}/relevant-specs.md. Update {prefix}/chunks.json and emit "
+        "RALPH_CHUNK_COMPLETE.\n",
         encoding="utf-8",
     )
     chunk = {
@@ -942,6 +946,52 @@ class RalphRuntimeTest(unittest.TestCase):
             self.assertIn("sprint:1-demo:SCRATCHPAD.md", checks)
             self.assertIn("runtime:fingerprint", checks)
 
+    def test_validate_rejects_ambiguous_bare_sprint_prompt_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory) / "repo"
+            initialize_repo(repo)
+            initialized = run_cli(
+                "init",
+                "--repo",
+                str(repo),
+                "--agent",
+                "custom",
+                "--agent-command",
+                "true",
+                *BUDGET_ARGS,
+                "--disable-chunk-validation",
+                "--disable-sprint-validation",
+            )
+            self.assertEqual(initialized.returncode, 0, initialized.stderr)
+            sprint = create_sprint(repo)
+            (sprint / "prompt.md").write_text(
+                "Read SCRATCHPAD.md and chunks.json, then emit RALPH_CHUNK_COMPLETE.\n",
+                encoding="utf-8",
+            )
+            replace_config(
+                repo / ".ralph" / "config.env", "CURRENT_SPRINT", "1-demo"
+            )
+
+            result = run_cli("validate", "--repo", str(repo), "--json")
+            report = json.loads(result.stdout)
+            self.assertNotEqual(result.returncode, 0)
+            prompt_details = [
+                item["detail"]
+                for item in report["findings"]
+                if item["status"] == "fail"
+                and item["check"] == "sprint:1-demo:prompt"
+            ]
+            self.assertIn(
+                "missing root-relative prompt reference or marker: "
+                ".ralph/sprints/1-demo/SCRATCHPAD.md",
+                prompt_details,
+            )
+            self.assertIn(
+                "missing root-relative prompt reference or marker: "
+                ".ralph/sprints/1-demo/chunks.json",
+                prompt_details,
+            )
+
     def test_clean_room_custom_agent_completes_chunks_and_hooks(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             repo = Path(directory) / "repo with spaces"
@@ -1003,6 +1053,28 @@ class RalphRuntimeTest(unittest.TestCase):
             self.assertEqual(
                 run("git", "status", "--porcelain", "--", ".ralph", cwd=repo).stdout,
                 "",
+            )
+            run_dirs = sorted(
+                (repo / ".ralph" / "logs" / "1-demo").glob("run-*")
+            )
+            self.assertTrue(run_dirs)
+            orchestrator = (run_dirs[-1] / "orchestrator.log").read_text(
+                encoding="utf-8"
+            )
+            self.assertIn("agent_stream_closed", orchestrator)
+            self.assertNotIn("sidecar_nonzero_exit", orchestrator)
+            events = [
+                json.loads(line)
+                for line in (run_dirs[-1] / "events.jsonl")
+                .read_text(encoding="utf-8")
+                .splitlines()
+            ]
+            self.assertFalse(
+                any(
+                    event.get("type") == "process"
+                    and event.get("status") == "warning"
+                    for event in events
+                )
             )
 
     def test_marathon_advances_through_prepared_sprints_and_stops_cleanly(self) -> None:

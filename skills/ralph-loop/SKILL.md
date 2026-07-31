@@ -118,6 +118,8 @@ Read only the references needed for the requested operation.
 - Failed chunk validation resets only that claim, records structured evidence, and gives the next fresh context a repair handoff through `SCRATCHPAD.md`.
 - Artifact paths are accurate because downstream hooks depend on them.
 - Every sprint has persistent scratchpad memory; agents read it first and append decisions, dead ends, and discoveries before exiting.
+- Sprint prompts use `.ralph/sprints/<sprint-name>/...` root-relative paths because harnesses start
+  from the repository or orchestration root; validation rejects ambiguous bare sprint filenames.
 - Manifests represent resumable phases and hook status explicitly.
 - Review, documentation, and final validation hooks are idempotent and leave durable completion markers.
 - Hook runtime state belongs under the run log, outside sprint work products.

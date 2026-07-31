@@ -523,8 +523,12 @@ start_stream_sidecar() {
 stop_stream_sidecar() {
   local sidecar_pid="${1:-}"
   STOPPED_SIDECAR_EXIT=0
+  STOPPED_SIDECAR_WAS_RUNNING=false
   [[ -z "$sidecar_pid" ]] && return 0
 
+  if process_alive "$sidecar_pid"; then
+    STOPPED_SIDECAR_WAS_RUNNING=true
+  fi
   kill_process_tree "$sidecar_pid"
   # Sidecar termination is expected after agent completion/kill.
   # Keep this function non-fatal under `set -e` and expose exit via variable.
@@ -587,7 +591,7 @@ run_agent_with_watchdog() {
   stop_stream_sidecar "$SIDECAR_PID"
   sidecar_exit="${STOPPED_SIDECAR_EXIT:-0}"
 
-  if (( sidecar_exit != 0 )); then
+  if (( sidecar_exit != 0 )) && [[ "${STOPPED_SIDECAR_WAS_RUNNING:-false}" != "true" ]]; then
     log_orchestrator "sidecar_nonzero_exit: iteration=$CURRENT_ITERATION sidecar_pid=$SIDECAR_PID exit=$sidecar_exit"
     log_event "process" "warning" "iteration=$CURRENT_ITERATION sidecar_pid=$SIDECAR_PID sidecar_exit=$sidecar_exit"
   fi

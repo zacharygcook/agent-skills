@@ -15,6 +15,9 @@ Prepare exactly one reviewable sprint and stop before execution.
    folders.
 4. Create or validate `README.md`, `IMPLEMENTATION_PLAN.md`, `relevant-specs.md`, `chunks.json`,
    `prompt.md`, and `SCRATCHPAD.md` under `.ralph/sprints/<number-name>/`.
+   In `prompt.md`, refer to every sprint file with its repository-root-relative
+   `.ralph/sprints/<number-name>/...` path because the harness starts at the repository or
+   orchestration root.
 5. Keep chunks sequential and bounded. Give each concrete acceptance criteria, accurate artifact
    paths, and repository ownership in multi-repo mode.
 6. Set `CURRENT_SPRINT`, run `just validate` when available, and repair every setup defect.
