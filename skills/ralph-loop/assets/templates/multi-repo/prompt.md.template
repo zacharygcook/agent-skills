@@ -9,10 +9,14 @@ The working directory is a parent orchestrator containing `.ralph/` and two or m
 1. Read `.ralph/.runtime-manifest.json` to learn the configured repository names; never read
    `.ralph/config.env`.
 2. Read `.ralph/sprints/[SPRINT_FOLDER]/SCRATCHPAD.md` for durable context from earlier iterations.
-3. Read `IMPLEMENTATION_PLAN.md`, `README.md`, `relevant-specs.md`, and `chunks.json` in the sprint directory.
+3. Read `.ralph/sprints/[SPRINT_FOLDER]/IMPLEMENTATION_PLAN.md`,
+   `.ralph/sprints/[SPRINT_FOLDER]/README.md`,
+   `.ralph/sprints/[SPRINT_FOLDER]/relevant-specs.md`, and
+   `.ralph/sprints/[SPRINT_FOLDER]/chunks.json`.
 4. Find the first chunk where `passes: false`; its `repo` field names one configured repository or uses `all`/`both`.
 5. Complete and verify that chunk's acceptance criteria only in the named repositories.
-6. Append decisions, discoveries, per-repository state, and remaining risks to `SCRATCHPAD.md`.
+6. Append decisions, discoveries, per-repository state, and remaining risks to
+   `.ralph/sprints/[SPRINT_FOLDER]/SCRATCHPAD.md`.
 7. Commit separately inside every changed child repository. Inspect status and stage only paths belonging to the chunk.
 8. Run the configured fast validation, set only this chunk's `passes` field to `true`, commit each chunk-owned repository, then emit `<promise>RALPH_CHUNK_COMPLETE</promise>`.
 9. Ralph independently reruns `RALPH_CHUNK_VALIDATION_COMMAND`; completion is only accepted after that gate passes.

@@ -914,13 +914,21 @@ def validate_sprint(
     prompt_path = path / "prompt.md"
     if prompt_path.exists():
         prompt = prompt_path.read_text(encoding="utf-8")
-        for token in ("SCRATCHPAD.md", "RALPH_CHUNK_COMPLETE"):
+        sprint_prefix = f".ralph/sprints/{path.name}"
+        for token in (
+            f"{sprint_prefix}/SCRATCHPAD.md",
+            f"{sprint_prefix}/IMPLEMENTATION_PLAN.md",
+            f"{sprint_prefix}/README.md",
+            f"{sprint_prefix}/relevant-specs.md",
+            f"{sprint_prefix}/chunks.json",
+            "RALPH_CHUNK_COMPLETE",
+        ):
             if token not in prompt:
                 findings.append(
                     {
                         "status": "fail",
                         "check": f"sprint:{path.name}:prompt",
-                        "detail": f"missing {token}",
+                        "detail": f"missing root-relative prompt reference or marker: {token}",
                     }
                 )
     return findings
