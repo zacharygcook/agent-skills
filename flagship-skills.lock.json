@@ -398,7 +398,7 @@
         }
       },
       "fingerprint": "c02446d24cfbc22492df492b79c23025c970f05250be8af66bef13a825f5319d",
-      "source_commit": "b17a8eada876da6dda329e99c97e98cb2160f9c3",
+      "source_commit": "6a71a5624714839b3e6554e363468972526781cd",
       "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
       "version": "0.8.2"
     },
@@ -421,7 +421,7 @@
         }
       },
       "fingerprint": "c465886dda596ddfb0815c578cd81340087d98e596cd2762b7f18b91dccd2866",
-      "source_commit": "b17a8eada876da6dda329e99c97e98cb2160f9c3",
+      "source_commit": "6a71a5624714839b3e6554e363468972526781cd",
       "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
       "version": "0.8.2"
     },
@@ -444,7 +444,7 @@
         }
       },
       "fingerprint": "1173a40f70fc34723ed167a944ec180245046199a84ca6ada12c44a4366114dd",
-      "source_commit": "b17a8eada876da6dda329e99c97e98cb2160f9c3",
+      "source_commit": "6a71a5624714839b3e6554e363468972526781cd",
       "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
       "version": "0.8.2"
     },
@@ -467,7 +467,7 @@
         }
       },
       "fingerprint": "ae4a8787273cbc2e7f87069386ca1790a97c63b4e7d14229ff28a322c7ac7d0c",
-      "source_commit": "b17a8eada876da6dda329e99c97e98cb2160f9c3",
+      "source_commit": "6a71a5624714839b3e6554e363468972526781cd",
       "source_repository": "git@github.com:zacharygcook/zach-ralph-method.git",
       "version": "0.8.2"
     }
